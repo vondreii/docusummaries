@@ -9,12 +9,14 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
-import { environment } from "../environments/environment"; 
+import { environment } from "../environments/environment";
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirebaseComponent
+    FirebaseComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
