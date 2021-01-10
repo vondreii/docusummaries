@@ -1,0 +1,46 @@
+<p>firebase works!</p>
+<h3>Categories:</h3>
+<ul>
+  <li *ngFor="let category of categoryList | async"  role="listitem">
+      {{category.name}}
+  </li>
+</ul>
+<h3>Tags:</h3>
+<ul>
+  <li *ngFor="let tag of tagsList | async"  role="listitem">
+      {{tag.name}}
+  </li>
+</ul>
+<h3>Docos:</h3>
+<ul>
+  <li *ngFor="let doco of documentariesList | async"  role="listitem">
+      {{doco.name}}
+      {{doco.author}}
+      <!-- {{doco.tags}} -->
+      <ul>
+        <li *ngFor="let tag of doco.tags"  role="listitem">
+            {{tag}}
+        </li>
+      </ul>
+  </li>
+</ul>
+<h3>List of Aircrash only:</h3>
+<div *ngFor="let doco of documentariesList | async"  role="listitem">
+  <div *ngFor="let tag of doco.tags"  role="listitem">
+    <p *ngIf="tag==='id-aircrash'"> 
+      {{doco.name}}
+      {{doco.author}}
+      {{tag}}
+    </p>
+  </div>
+</div>
+<h3>List of Bomb only:</h3>
+<div *ngFor="let doco of documentariesList | async"  role="listitem">
+  <div *ngFor="let tag of doco.tags"  role="listitem">
+    <p *ngIf="tag==='id-explosionsOrFire'"> 
+      {{doco.name}}
+      {{doco.author}}
+      {{tag}}
+    </p>
+  </div>
+</div>
