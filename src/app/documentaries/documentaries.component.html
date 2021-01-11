@@ -1,1 +1,28 @@
-<p>documentaries works!</p>
+<h3> {{toTitleCase(hrefLink)}} </h3>
+
+<h3>List of Aircrash only:</h3>
+<div *ngFor="let doco of documentariesList | async"  role="listitem">
+  <div *ngFor="let tag of doco.tags"  role="listitem">
+    <p *ngIf="tag===currentCategory"> 
+      {{doco.name}}
+      {{doco.author}}
+      {{tag}}
+    </p>
+  </div>
+</div>
+
+<hr>
+
+<h3>All documentaries:</h3>
+<ul>
+  <li *ngFor="let doco of documentariesList | async"  role="listitem">
+      {{doco.name}}
+      {{doco.author}}
+      <!-- {{doco.tags}} -->
+      <ul>
+        <li *ngFor="let tag of doco.tags"  role="listitem">
+            {{tag}}
+        </li>
+      </ul>
+  </li>
+</ul>
