@@ -5,10 +5,11 @@ import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FirebaseComponent } from './firebase/firebase.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   //  { path: 'about', component: AboutComponent },
-  { path: '', component: CategoriesComponent },
+  { path: '', component: HomeComponent },
   { path: 'firebase', component: FirebaseComponent },
   { path: 'about', component: AboutComponent },
   {

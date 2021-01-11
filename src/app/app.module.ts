@@ -13,6 +13,7 @@ import { environment } from "../environments/environment";
 import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DocumentariesComponent } from './documentaries/documentaries.component'
     AboutComponent,
     CategoriesComponent,
     DocumentariesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
