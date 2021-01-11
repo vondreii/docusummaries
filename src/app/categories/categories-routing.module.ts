@@ -13,8 +13,14 @@ const routes: Routes = [
   { path: 'psychology', component: DocumentariesComponent },
   { path: 'shootings', component: DocumentariesComponent },
 
+  {
+    path: 'article',
+    loadChildren: () => import('../documentaries/documentaries.module').then(m => m.DocumentariesModule)
+  },
+
+  // { path: 'article/doco1', component: HomeComponent },
   
-  { path: 'aircrash/example', component: HomeComponent },
+  // { path: 'aircrash/example', component: HomeComponent },
 ];
 
 @NgModule({
