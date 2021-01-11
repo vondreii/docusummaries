@@ -18,6 +18,7 @@ import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
 import { HomeComponent } from './home/home.component';
+import { DocumentariesModule } from './documentaries/documentaries.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HomeComponent } from './home/home.component';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    DocumentariesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

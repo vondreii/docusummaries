@@ -5,10 +5,8 @@ import { DocumentariesComponent } from './documentaries.component';
 import { DocumentaryComponent } from './documentary/documentary.component';
 
 const routes: Routes = [
+  // For Markdown functionality for each page
   { path: '', component: DocumentariesComponent },
-  // { path: 'doco1', component: HomeComponent },
-  // { path: 'doco2', component: HomeComponent },
-  // { path: 'doco3', component: HomeComponent },
   { path: ':article', component: DocumentaryComponent },
 ];
 
