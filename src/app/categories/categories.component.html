@@ -1,8 +1,8 @@
 <h3>List of all categories:</h3>
 <!-- List tags under it's category -->
-<div *ngFor="let category of dbCategoryList | async"  role="listitem">
+<div *ngFor="let category of categoryList | async"  role="listitem">
   <h3>{{category.name}}</h3>
-  <div *ngFor="let tag of dbTagsList | async"  role="listitem">
+  <div *ngFor="let tag of tagsList | async"  role="listitem">
     <p *ngIf="tag.category===category.id"> 
       <a routerLink="{{tag.link}}">{{tag.name}}</a>
     </p>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { TagService } from '../services/tag.service';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -8,16 +9,18 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CategoriesComponent implements OnInit {
 
-  // data taken directly from Dabatase
-  dbCategoryList: any;
-  dbTagsList: any;
+  // Data taken directly from Dabatase
+  categoryList: any;
+  tagsList: any;
 
-  categoryList: Array<string> = [];
+  constructor(
+    private tagService: TagService,
+    private categoryService: CategoryService
+  ) { }
 
-  constructor(private db: AngularFirestore) { }
-
+  // Read and Store Categories and Tags
   ngOnInit(): void {
-    this.dbCategoryList = this.db.collection('category').valueChanges({ idField: 'id' });
-    this.dbTagsList = this.db.collection('tag').valueChanges({ idField: 'id' });
+    this.categoryList = this.categoryService.readFromDB();
+    this.tagsList = this.tagService.readFromDB();
   }
 }

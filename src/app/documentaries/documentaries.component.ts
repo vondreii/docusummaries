@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { DocumentaryService } from '../services/documentary.service';
+import { TagService } from '../services/tag.service';
 
 @Component({
   selector: 'app-documentaries',
@@ -8,50 +9,39 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class DocumentariesComponent implements OnInit {
 
-  // for getting the url at the top
-  href: string;
-  hrefLink: string;
+  // For the url at the top
+  linkRoute: string;
 
-  categoryList: any;
+  // Tag and documentary data from DB
   tagsList: any;
   documentariesList: any;
 
-  currentCategory: any = "";
+  // Used for only displaying current categories
+  currentTagId: string = "";
+  currentTag: string = "";
 
-  constructor(private db: AngularFirestore) { }
+  constructor(
+    private tagService: TagService,
+    private docoService: DocumentaryService
+  ) { }
 
+  //  Gets the end of the url (eg, 'aircrash') and only prints documentaries related to that tag
   ngOnInit(): void {
-    this.href = window.location.href;
-    this.hrefLink = this.href.substring(this.href.lastIndexOf("/")+1,this.href.length);
-
-    this.categoryList = this.db.collection('category').valueChanges({ idField: 'id' });
-    this.documentariesList = this.db.collection('documentary').valueChanges({ idField: 'id' });
-
-    this.getTags();
+    let url = window.location.href;
+    this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
+    this.getCurrentTag();
+    this.documentariesList = this.docoService.readFromDB();
   }
 
-  toTitleCase(word: string) {
-    if (!word) return word;
-    return word[0].toUpperCase() + word.substr(1).toLowerCase();
-  }
-
-  async getTags() {
-    this.tagsList = await this.readTagsListDB();
-    console.log(this.tagsList);
+  // Compares a list of all tags to the selected one
+  async getCurrentTag() {
+    this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {
-      console.log(tag.link + ", " + this.hrefLink)
-      if(this.hrefLink.match(tag.link.toString())){
-        console.log("Yes");
-        this.currentCategory = tag.id;
-        console.log("Current category: "+this.currentCategory);
+      if(this.linkRoute.match(tag.link.toString())){
+        this.currentTagId = tag.id;
+        this.currentTag = tag.name;
       }
     });
-    console.log("Current category: "+this.currentCategory);
-  }
-
-  readTagsListDB() {
-    return new Promise<any>((resolve)=> {
-      this.db.collection('tag').valueChanges({ idField: 'id' }).subscribe(tags => resolve(tags));
-    })
+    console.log("Tag seleced: " + this.currentTag);
   }
 }

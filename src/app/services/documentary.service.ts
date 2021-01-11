@@ -5,17 +5,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class DocumentaryService {
-
-  documentariesList: any;
-
+  
   constructor(private db: AngularFirestore) { }
 
-  readDocumentariesDB() {
+  // Return all Documentary objects from Firebase
+  readFromDB() {
     return new Promise<any>((resolve)=> {
       this.db.collection('documentary').valueChanges({ idField: 'id' }).subscribe(docos => resolve(docos));
-
-      // this.categoryList = this.db.collection('category').valueChanges({ idField: 'id' });
-      // this.documentariesList = this.db.collection('documentary').valueChanges({ idField: 'id' });
     })
   }
 }

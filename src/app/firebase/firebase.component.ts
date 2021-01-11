@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { TagService } from '../services/tag.service';
+import { CategoryService } from '../services/category.service';
+import { DocumentaryService } from '../services/documentary.service';
 
 @Component({
   selector: 'app-firebase',
@@ -12,11 +14,15 @@ export class FirebaseComponent implements OnInit {
   tagsList: any;
   documentariesList: any;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(
+    private tagService: TagService,
+    private categoryService: CategoryService,
+    private docoService: DocumentaryService
+  ) { }
 
   ngOnInit(): void {
-    this.categoryList = this.db.collection('category').valueChanges({ idField: 'id' });
-    this.tagsList = this.db.collection('tag').valueChanges({ idField: 'id' });
-    this.documentariesList = this.db.collection('documentary').valueChanges({ idField: 'id' });
+    this.categoryList = this.categoryService.readFromDB();
+    this.tagsList = this.tagService.readFromDB();
+    this.documentariesList = this.docoService.readFromDB();
   }
 }
