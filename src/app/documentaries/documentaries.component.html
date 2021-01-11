@@ -2,26 +2,10 @@
 <div *ngFor="let doco of documentariesList | async"  role="listitem">
   <div *ngFor="let tag of doco.tags"  role="listitem">
     <p *ngIf="tag===currentTagId"> 
-      {{doco.name}}
-      <!-- {{doco.author}} -->
-      <!-- {{tag}} -->
+      <a routerLink="{{doco.link}}"> {{doco.name}} </a>
     </p>
   </div>
 </div>
-
-<hr>
-
-<br>
-<br>
-<a routerLink="/categories/article/doco1">Example</a>
-<br>
-<br>
-<a routerLink="/categories/article/doco2">Example</a>
-<br>
-<br>
-<a routerLink="/categories/article/doco3">Example</a>
-<br>
-<br>
 
 <h3>All documentaries:</h3>
 <ul>
