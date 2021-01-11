@@ -1,0 +1,10 @@
+<h3>List of all categories:</h3>
+<div *ngFor="let category of dbCategoryList | async"  role="listitem">
+  <h3>{{category.name}}</h3>
+  <div *ngFor="let tag of dbTagsList | async"  role="listitem">
+    <p *ngIf="tag.category===category.id"> 
+      {{tag.name}}
+    </p>
+  </div>
+  <br>
+</div>
