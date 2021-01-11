@@ -11,7 +11,16 @@ const routes: Routes = [
   { path: '', component: CategoriesComponent },
   { path: 'firebase', component: FirebaseComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'categories', component: CategoriesComponent }
+  {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
+  },
+
+  // { path: 'categories', component: CategoriesComponent },
+
+  // Fix this later
+  { path: 'aircrash', component: AboutComponent },
+  { path: 'explosions-or-fire', component: AboutComponent }
 ]
 
 @NgModule({

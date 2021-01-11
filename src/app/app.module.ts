@@ -12,6 +12,7 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
 import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { DocumentariesComponent } from './documentaries/documentaries.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CategoriesComponent } from './categories/categories.component';
     FirebaseComponent,
     AboutComponent,
     CategoriesComponent,
+    DocumentariesComponent,
   ],
   imports: [
     BrowserModule,
