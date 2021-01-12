@@ -6,13 +6,4 @@ export class Documentary {
   studio: string = "Fetching...";
   tags: Array<string> = ["Fetching..."];
   topic: string = "Fetching...";
-
-  toString(): string {
-    return this.name + " - " +
-           this.description + " - " +
-           this.producer + " - " +
-           this.studio + " - " +
-           this.tags + " - " +
-           this.topic;
-  }
 }

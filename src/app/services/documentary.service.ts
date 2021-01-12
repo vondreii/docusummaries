@@ -14,4 +14,14 @@ export class DocumentaryService {
       this.db.collection('documentary').valueChanges({ idField: 'id' }).subscribe(docos => resolve(docos));
     })
   }
+  
+  
+  // async createSearchList() {
+  //   let searchString = new Array<string>();
+  //   let documentariesList = await this.readFromDB();
+  //   documentariesList.forEach(doco => {
+  //     searchString.push(doco.name);
+  //   });
+  //   return searchString;
+  // }
 }

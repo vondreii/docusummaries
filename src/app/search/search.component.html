@@ -7,12 +7,11 @@
       <input type="email" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
         placeholder="Enter text to search" autofocus>
     </div>
-    <div class="list-group list-group-flush">
-      <div class="list-group-item" *ngFor="let c of characters | appFilter: searchText | slice: 0:20; let i=index" appHighlight
-        [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'">
-        <div [hidden]="searchText==''">
-          <a routerLink="/categories/article/survivingLockerbie">{{c}}</a>
-        </div>
+    <div class="list-group list-group-flush" >
+      <div class="list-group-item" *ngFor="let c of searchString | appFilter: searchText | slice: 0:20; let i=index" appHighlight
+        [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'" [hidden]="searchText==''">
+          <p></p>
+          <a routerLink="{{c.substring(c.indexOf('@')+1,c.length)}}">{{c}}</a>
       </div>
     </div>
   </div>
