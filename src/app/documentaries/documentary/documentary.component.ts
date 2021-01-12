@@ -14,18 +14,26 @@ export class DocumentaryComponent implements OnInit {
   articleName: string;
   documentariesList: any;
   currentDoco: Documentary = new Documentary();
-  loaded = false;
 
   constructor(
     private route: ActivatedRoute,
     private docoService: DocumentaryService
-  ) { }
+  ) { 
+    // The params is the :id or :article (unique value) after the route.
+    // Eg, /category/article/Comet781 = Comet781 is the params. 
+    this.route.params.subscribe(params => 
+      {
+        this.articleName = params.article;
+        console.log(this.articleName);
+        this.getCurrentDoco();
+      }
+    );
+  }
 
   ngOnInit(): void {
     // md files
     this.articleName = this.route.snapshot.paramMap.get('article');
     this.post = './assets/articles/' +  this.articleName + '.md';
-    
     this.getCurrentDoco();
   }
 

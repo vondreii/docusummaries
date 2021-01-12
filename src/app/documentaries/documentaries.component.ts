@@ -42,6 +42,6 @@ export class DocumentariesComponent implements OnInit {
         this.currentTag = tag.name;
       }
     });
-    console.log("Tag seleced: " + this.currentTag);
+    console.log("Tag selected: " + this.currentTag);
   }
 }
