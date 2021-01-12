@@ -1,3 +1,4 @@
+/* Border around each search item */
 .list-group-item {
   border: 1px solid black;
   padding: 5px

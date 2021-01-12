@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentaryService } from '../services/documentary.service';
 import { TagService } from '../services/tag.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-documentaries',
@@ -21,19 +22,30 @@ export class DocumentariesComponent implements OnInit {
   currentTag: string = "";
 
   constructor(
+    private route: ActivatedRoute,
     private tagService: TagService,
     private docoService: DocumentaryService
-  ) { }
+  ) { 
+    // params is the :id (unique value) from the link (eg 'aircrash' from /categories/aircrash). 
+    this.route.params.subscribe(params => {
+      this.listDocos();
+    });
+  }
 
-  //  Gets the end of the url (eg, 'aircrash') and only prints documentaries related to that tag
+  // Provide a list of documentaries
   ngOnInit(): void {
+    this.listDocos();
+  }
+
+  // Only list documentaries that match the tag, eg 'aircrash'.
+  listDocos() {
     let url = window.location.href;
     this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
     this.getCurrentTag();
     this.documentariesList = this.docoService.readFromDB();
   }
 
-  // Compares a list of all tags to the selected one
+  // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
   async getCurrentTag() {
     this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {

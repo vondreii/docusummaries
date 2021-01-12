@@ -10,6 +10,7 @@ import { Documentary } from '../../models/models';
 })
 export class DocumentaryComponent implements OnInit {
 
+  // declare doco variables
   post: string;
   articleName: string;
   documentariesList: any;
@@ -19,24 +20,21 @@ export class DocumentaryComponent implements OnInit {
     private route: ActivatedRoute,
     private docoService: DocumentaryService
   ) { 
-    // The params is the :id or :article (unique value) after the route.
-    // Eg, /category/article/Comet781 = Comet781 is the params. 
-    this.route.params.subscribe(params => 
-      {
-        this.articleName = params.article;
-        console.log(this.articleName);
-        this.getCurrentDoco();
-      }
-    );
+    // params is the :id (unique value) from the link (eg 'Comet781' from /../article/Comet781). 
+    this.route.params.subscribe(params => {
+      this.articleName = params.article;
+      this.getCurrentDoco();
+    });
   }
 
+  // Get the article's name using the route and find the associated md file in src/assets.
   ngOnInit(): void {
-    // md files
     this.articleName = this.route.snapshot.paramMap.get('article');
     this.post = './assets/articles/' +  this.articleName + '.md';
     this.getCurrentDoco();
   }
 
+  // Find the rest of the info related to the current doco (eg, description), to display it.
   async getCurrentDoco() {
     this.documentariesList = await this.docoService.readFromDB();
     this.documentariesList.forEach(doco => {

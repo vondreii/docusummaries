@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Resources from https://dev.to/idrisrampurawala/creating-a-search-filter-in-angular-562d
 @Pipe({ name: 'appFilter' })
 export class FilterPipe implements PipeTransform {
   /**

@@ -30,25 +30,29 @@ import { DocumentaryComponent } from './documentaries/documentary/documentary.co
 
 @NgModule({
   declarations: [
+    // Pages
     AppComponent,
     FirebaseComponent,
     AboutComponent,
     CategoriesComponent,
     DocumentariesComponent,
     HomeComponent,
+    DocumentaryComponent,
+    // Searchbar
     HighlightDirective,
     FilterPipe,
     SearchComponent,
-    DocumentaryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    // Firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    FormsModule,
+    // Markdown
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE })
   ],
