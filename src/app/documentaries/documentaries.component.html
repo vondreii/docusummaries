@@ -1,9 +1,12 @@
 <h3> List of {{currentTag}} only: </h3>
 <div *ngFor="let doco of documentariesList | async"  role="listitem">
   <div *ngFor="let tag of doco.tags"  role="listitem">
-    <p *ngIf="tag===currentTagId"> 
+    <div *ngIf="tag===currentTagId"> 
       <a routerLink="{{doco.link}}"> {{doco.name}} </a>
-    </p>
+      <p>{{doco.description}}</p>
+      <p>{{doco.studio}}</p>
+      <p>{{doco.tags}}</p>
+    </div>
   </div>
 </div>
 

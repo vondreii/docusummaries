@@ -1,0 +1,13 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  padding: 1.5rem;
+  border-width: 0.2rem;
+  border: solid #f8f9fa;
+  position: relative;
+  margin: 1rem 1rem;
+  min-width: 500px;
+}

@@ -1,17 +1,3 @@
-# Lockerbie Bombing
+### Summary 
 
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
+Summary of Lockerbie Bombing from md file

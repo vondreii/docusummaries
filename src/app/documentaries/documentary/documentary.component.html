@@ -1,3 +1,11 @@
-<p>documentary works!</p>
+<div>
+  <h2>{{currentDoco.name}}</h2>
+  <p><b>Description:</b> {{currentDoco.description}}</p>
+  <p><b>Find on Youtube:</b> <a href="{{currentDoco.linkToDoco}}">{{currentDoco.linkToDoco}}</a></p> 
+  <p><b>Producer:</b> {{currentDoco.producer}}</p>
+  <p><b>Studio:</b> {{currentDoco.studio}}</p>
+  <p><b>Tags:</b> {{currentDoco.tags}}</p>
+  <p><b>Topic:</b> {{currentDoco.topic}}</p>
+  <div markdown [src]="post"></div>
+</div>
 
-<div markdown [src]="post"></div>

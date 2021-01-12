@@ -1,10 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
+
+// Searchbar
+import { HighlightDirective } from './search/highlight.directive';
+import { FilterPipe } from './search/filter.pipe';
 
 // Firebase
 import { FirebaseComponent } from './firebase/firebase.component';
@@ -19,6 +24,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
 import { HomeComponent } from './home/home.component';
 import { DocumentariesModule } from './documentaries/documentaries.module';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,10 @@ import { DocumentariesModule } from './documentaries/documentaries.module';
     AboutComponent,
     CategoriesComponent,
     DocumentariesComponent,
-    HomeComponent
+    HomeComponent,
+    HighlightDirective,
+    FilterPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +45,8 @@ import { DocumentariesModule } from './documentaries/documentaries.module';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    DocumentariesModule
+    DocumentariesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
