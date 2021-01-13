@@ -1,17 +1,46 @@
-<h3> List of {{currentTag}} only: </h3>
-<!-- List only the documentaries of the tag selected -->
-<div *ngFor="let doco of documentariesList | async"  role="listitem">
-  <div *ngFor="let tag of doco.tags"  role="listitem">
-    <div *ngIf="tag===currentTagId"> 
+<div *ngIf="currentTag!=''; else categoryHeading"> 
+  <h3> List of {{currentTag}} only: </h3>
+</div>
+<ng-template #categoryHeading>
+  <h3> List of {{currentCategory}} only: </h3>
+</ng-template>
+<!-- If viewing docos by tag -->
+<div *ngIf="currentTag!=''; else showAllFromCategory"> 
+  <div *ngFor="let doco of documentariesList | async"  role="listitem">
+    <!-- If user selected to only show docos for a specific tag -->
+    <div *ngFor="let tag of doco.tags"  role="listitem">
+      <div *ngIf="tag===currentTagId"> 
+        <!-- Display their details -->
+        <a routerLink="{{doco.link}}"> {{doco.name}} </a>
+        <p>{{doco.description}}</p>
+        <p>{{doco.studio}}</p>
+        <p>{{doco.tags}}</p>
+        <!-- End of details -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- If viewing docos by a specific category -->
+<ng-template #showAllFromCategory>
+  <!-- Show a list of tags under that category -->
+  <div *ngFor="let tag of tagsList"  role="listitem">
+    <div *ngIf="tag.category===currentCategoryId"> 
+      <a routerLink="{{'/categories/'+tag.link}}">{{'#'+tag.name}}</a>
+    </div>
+  </div>
+  <!-- Show documentaries under that category -->
+  <div *ngFor="let doco of documentariesList | async"  role="listitem">
+    <div *ngIf="doco.category===currentCategoryId"> 
       <!-- Display their details -->
       <a routerLink="{{doco.link}}"> {{doco.name}} </a>
       <p>{{doco.description}}</p>
       <p>{{doco.studio}}</p>
       <p>{{doco.tags}}</p>
+      <p>{{doco.category}}</p>
       <!-- End of details -->
     </div>
   </div>
-</div>
+</ng-template>
 <!-- End of loop -->
 
 <!-- <h3>All documentaries:</h3>
