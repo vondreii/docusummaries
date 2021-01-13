@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TagService } from '../services/tag.service';
 import { DocumentaryService } from '../services/documentary.service';
 import { CategoryService } from '../services/category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -18,6 +19,7 @@ export class SearchComponent implements OnInit {
   searchString: Array<string> = new Array<string>();
 
   constructor(
+    private route: ActivatedRoute,
     private categoryService: CategoryService,
     private docoService: DocumentaryService,
     private tagService: TagService
@@ -29,6 +31,11 @@ export class SearchComponent implements OnInit {
     this.addTags();
     this.addDocos();
     console.log("Search string created." + this.searchString);
+  }
+
+  onSelect() {
+    console.log("Something selected");
+    this.searchText = '';
   }
 
   // Pull categories list from Firebase and add to the search string

@@ -1,7 +1,7 @@
 <h3>List of all categories:</h3>
 <!-- Loop through every category -->
 <div *ngFor="let category of categoryList | async"  role="listitem">
-  <h3>{{category.name}}</h3>
+  <h3><a routerLink="{{category.link}}">{{category.name}}</a></h3>
   <!-- Display all related tags underneath the category -->
   <div *ngFor="let tag of tagsList | async"  role="listitem">
     <p *ngIf="tag.category===category.id"> 
@@ -10,3 +10,4 @@
   </div>
   <br>
 </div>
+
