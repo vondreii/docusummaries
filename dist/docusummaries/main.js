@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Sharl\Documents\_MY DOCUMENTS\Side Projects\Docusummaries\docusummaries\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! W:\Side Projects\Docos\docusummaries\src\main.ts */"zUnb");
 
 
 /***/ }),
