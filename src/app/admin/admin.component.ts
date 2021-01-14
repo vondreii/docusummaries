@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentaryService } from '../services/documentary.service';
-import { FormControl, FormGroup } from "@Angular/forms";
 import { Documentary } from '../models/models';
 
 @Component({
