@@ -6,9 +6,11 @@ import { DocumentariesComponent } from './documentaries/documentaries.component'
 import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
 import { FirebaseComponent } from './firebase/firebase.component';
 import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'firebase', component: FirebaseComponent },
   { path: 'about', component: AboutComponent },
   { path: 'categories', component: CategoriesComponent },

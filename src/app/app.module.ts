@@ -27,6 +27,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
 import { HomeComponent } from './home/home.component';
 import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DocumentaryComponent } from './documentaries/documentary/documentary.co
     HighlightDirective,
     FilterPipe,
     SearchComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
