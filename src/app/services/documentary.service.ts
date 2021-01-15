@@ -15,17 +15,17 @@ export class DocumentaryService {
     })
   }
 
-  addToDB() {
+  addToDB(name: string, desc: string, linkToDoco: string, producer: string, studio: string, category: string, tags: string[]) {
     console.log("Adding doco");
     this.db.collection('test').add({
-      category: "test category",
-      description: "test desc",
+      category: category,
+      description: desc,
       link: "test link",
-      linkToDoco: "test linkToDoco",
-      name: "blah",
-      producer: "test linkToDoco",
-      studio: "blah",
-      tags: ["something", "somethingElse"],
+      linkToDoco: linkToDoco,
+      name: name,
+      producer: producer,
+      studio: studio,
+      tags: tags,
       topic: "blah"
     })
   }

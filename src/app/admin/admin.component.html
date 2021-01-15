@@ -1,7 +1,64 @@
-<p>admin works!</p>
+<hr>
+<h1>Admin - Add and Edit Docos</h1>
 
-Needs to have some sort of login or whatever
 <br>
-<br>
+
+<form>
+  <!-- Doco Name -->
+  <div class="form-group">
+    <label for="docoName">Doco Name</label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="docoName" name="docoName" id="docoName" 
+      placeholder="Seconds From Disaster: Aircrash">
+  </div>
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" 
+      [(ngModel)]="description" name="description" id="description" rows="3"
+      placeholder="A short description here">
+    </textarea>
+  </div>
+  <!-- Link To Doco -->
+  <div class="form-group">
+    <label for="linkToDoco">Link To Doco</label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="linkToDoco" name="linkToDoco" id="linkToDoco" 
+      placeholder="https://www.youtube.com/watch?v=It1y9bu9VUA">
+  </div>
+  <!-- Producer -->
+  <div class="form-group">
+    <label for="producer">Producer</label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="producer" name="producer" id="producer" 
+      placeholder="Malcolm">
+  </div>
+  <!-- Studio -->
+  <div class="form-group">
+    <label for="studio">Studio</label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="studio" name="studio" id="studio" 
+      placeholder="Falcon">
+  </div>
+  <!-- Category -->
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select class="form-control" (change)="onCategoryChange();" [(ngModel)]="category" name="category" id="category">
+      <option>Please Select</option>
+      <option *ngFor="let category of categoryList | async"  role="listitem">
+        {{category.id}}
+      </option>
+    </select>
+  </div>
+  <!-- Multi Select Tags -->
+  <div [hidden]="hideTags" class="form-group">
+    <label for="tags">Tags</label>
+    <select multiple class="form-control" size="10" style="height: 100%;" [(ngModel)]="tags" name="tags" id="tags">
+      <option *ngFor="let tag of tagsByCategory" role="listitem">
+        {{tag.id}}
+      </option>
+    </select>
+  </div>
+</form>
 
 <button (click)="onAdd()" type="button" class="btn btn-primary">(+) Add</button>
