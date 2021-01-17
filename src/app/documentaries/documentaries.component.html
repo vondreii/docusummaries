@@ -25,7 +25,7 @@
   <!-- Show a list of tags under that category -->
   <div *ngFor="let tag of tagsList"  role="listitem">
     <div *ngIf="tag.category===currentCategoryId"> 
-      <a routerLink="{{'/categories/'+tag.link}}">{{'#'+tag.name}}</a>
+      <a routerLink="{{'/'+tag.link}}">{{'#'+tag.name}}</a>
     </div>
   </div>
   <!-- Show documentaries under that category -->

@@ -5,17 +5,16 @@ import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
 import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
 import { FirebaseComponent } from './firebase/firebase.component';
-import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  // { path: '', component: CategoriesComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'firebase', component: FirebaseComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'categories/:id', component: DocumentariesComponent },
-  { path: 'categories/article/:article', component: DocumentaryComponent },
+  { path: '', component: CategoriesComponent },
+  { path: ':id', component: DocumentariesComponent },
+  { path: 'article/:article', component: DocumentaryComponent },
 ]
 
 @NgModule({

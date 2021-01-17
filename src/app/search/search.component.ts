@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
   async addCatagories() {
     this.categoriesList = await this.categoryService.readFromDB();
     this.categoriesList.forEach(category => {
-      this.searchString.push(category.name + " (Category) -@/categories/" + category.link);
+      this.searchString.push(category.name + " (Category) -@" + category.link);
     });
   }
 
@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
   async addTags() {
     this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {
-      this.searchString.push("#" + tag.name + " -@/categories/" + tag.link);
+      this.searchString.push("#" + tag.name + " -@" + tag.link);
     });
   }
 

@@ -25,9 +25,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { DocumentariesComponent } from './documentaries/documentaries.component';
-import { HomeComponent } from './home/home.component';
 import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
 import { AdminComponent } from './admin/admin.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +37,13 @@ import { AdminComponent } from './admin/admin.component';
     AboutComponent,
     CategoriesComponent,
     DocumentariesComponent,
-    HomeComponent,
     DocumentaryComponent,
     // Searchbar
     HighlightDirective,
     FilterPipe,
     SearchComponent,
     AdminComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
