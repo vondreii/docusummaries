@@ -56,7 +56,7 @@ import { AdminComponent } from './admin/admin.component';
     AngularFireStorageModule,
     // Markdown
     HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE })
+    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE }),
   ],
   providers: [],
   bootstrap: [AppComponent]
