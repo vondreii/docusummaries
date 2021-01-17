@@ -28,6 +28,7 @@ import { DocumentariesComponent } from './documentaries/documentaries.component'
 import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
 import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     SearchComponent,
     AdminComponent,
     NavbarComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,21 +13,22 @@
             <a class="nav-link" routerLink="/">Home</a>
           </li>
           <!-- Categories -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown pr-4">
             <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
             <div class="dropdown-menu" aria-labelledby="dropdown07">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <!-- Show link for each category -->
+              <div *ngFor="let category of categoryList | async"  role="listitem">
+                <a class="dropdown-item" href="/{{category.link}}">{{category.name}}</a>
+              </div>
             </div>
           </li>
           <!-- About -->
           <li class="nav-item pr-4">
-            <a class="nav-link" routerLink="about">About</a>
+            <a class="nav-link" routerLink="/about">About</a>
           </li>
           <!-- Contact -->
           <li class="nav-item pr-4">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" routerLink="/contact">Contact</a>
           </li>
         </ul>
         <!-- End list of links -->

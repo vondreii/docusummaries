@@ -1,15 +1,14 @@
 <!-- Container for search -->
-<div class="content" role="main">
+<div class="content pt-5" role="main">
   <!-- Input for searchbox -->
   <div class="form-group">
-    <label for="search-text">Search Text</label>
     <input type="email" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
       placeholder="Enter text to search" autofocus>
   </div>
   <!-- End input -->
   <!-- List of results -->
   <div class="list-group list-group-flush" [hidden]="searchText==''">
-    <div class="list-group-item" *ngFor="let c of searchString | appFilter: searchText | slice: 0:20; let i=index" appHighlight
+    <div class="list-group-item" *ngFor="let c of searchString | appFilter: searchText | slice: 0:10; let i=index" appHighlight
       [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'" [hidden]="searchText==''">
         <a (click)="onSelect()" routerLink="{{c.substring(c.indexOf('@')+1,c.length)}}">{{c.substring(0,c.indexOf(' -@'))}}</a>
     </div>
