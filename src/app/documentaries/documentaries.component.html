@@ -1,8 +1,8 @@
 <div *ngIf="currentTag!=''; else categoryHeading"> 
-  <h3> List of {{currentTag}} only: </h3>
+  <h3> {{currentTag}} </h3>
 </div>
 <ng-template #categoryHeading>
-  <h3> List of {{currentCategory}} only: </h3>
+  <h3> {{currentCategory}} </h3>
 </ng-template>
 <!-- If viewing docos by tag -->
 <div *ngIf="currentTag!=''; else showAllFromCategory"> 
@@ -23,10 +23,10 @@
 <!-- If viewing docos by a specific category -->
 <ng-template #showAllFromCategory>
   <!-- Show a list of tags under that category -->
-  <div *ngFor="let tag of tagsList"  role="listitem">
-    <div *ngIf="tag.category===currentCategoryId"> 
-      <a routerLink="{{'/'+tag.link}}">{{'#'+tag.name}}</a>
-    </div>
+  <div *ngFor="let tag of tagsList" role="listitem" class="d-inline">
+    <a *ngIf="tag.category===currentCategoryId" routerLink="{{'/'+tag.link}}" >
+      <span class="badge badge-secondary tag mb-3 mt-3" >{{'#'+tag.name}}</span>
+    </a>
   </div>
   <!-- Show documentaries under that category -->
   <div *ngFor="let doco of documentariesList | async"  role="listitem">
