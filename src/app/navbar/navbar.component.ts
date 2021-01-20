@@ -16,6 +16,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryList = this.categoryService.readFromDB();
+
+    
+
   }
+
+  
 
 }
