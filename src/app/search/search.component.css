@@ -3,10 +3,13 @@
   padding: 5px
 }
 .search {
-  padding: 50px 200px 50px 200px;
+  padding: 20px 200px 20px 200px;
   background-color:rgb(248, 248, 248);
   position: relative;
   z-index: 1;
+}
+.searchbox {
+  border-radius: 25px
 }
 .searchLinks {
   border-radius: 10px;
@@ -17,9 +20,9 @@
 }
 
 /* Medium screens */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   .search {
-    padding: 50px 150px 50px 150px;
+    padding: 10px 150px 10px 150px;
   }
   .searchLinks {
     width: 600px;
@@ -27,7 +30,7 @@
 }
 @media screen and (max-width: 800px) {
   .search {
-    padding: 50px 80px 50px 80px;
+    padding: 10px 80px 10px 80px;
   }
   .searchLinks {
     width: 500px;
@@ -36,7 +39,7 @@
 /* Smaller screens (different phones) */
 @media screen and (max-width: 600px) {
   .search {
-    padding: 50px 20px 50px 20px;
+    padding: 10px 20px 10px 20px;
   }
   .searchLinks {
     width: 400px;
@@ -44,7 +47,7 @@
 }
 @media screen and (max-width: 400px) {
   .search {
-    padding: 50px 20px 50px 20px;
+    padding: 10px 20px 10px 20px;
   }
   .searchLinks {
     width: 300px;
@@ -52,7 +55,7 @@
 }
 @media screen and (max-width: 300px) {
   .search {
-    padding: 50px 20px 50px 20px;
+    padding: 10px 20px 10px 20px;
   }
   .searchLinks {
     width: 200px;
