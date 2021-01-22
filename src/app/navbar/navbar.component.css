@@ -1,6 +1,7 @@
 .box {
   /* box-shadow: 1px 2px rgb(230, 230, 230); */
-  padding: 10px 200px
+  padding: 10px 200px;
+  border-bottom: 1px solid rgb(211, 211, 211)
 }
 
 @media screen and (max-width: 1000px) {

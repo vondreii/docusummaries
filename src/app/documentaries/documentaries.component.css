@@ -1,6 +1,5 @@
 .tag {
-  font-size:16px;
-  padding: 5px 20px;
-  margin-right: 5px;
-  background-color: rgb(145, 145, 145)
+  margin-right: 10px;
+  background-color:rgb(173, 173, 173);
+  font-size: 16px
 }

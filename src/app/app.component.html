@@ -1,8 +1,10 @@
 <app-navbar></app-navbar>
-<app-search></app-search>
-<br> <!-- temporary -->
-<div>
+
+<div class="body">
   <div class="container">
-    <router-outlet></router-outlet>
+    <div class="pageContent">
+      <app-search></app-search>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

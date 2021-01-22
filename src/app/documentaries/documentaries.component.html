@@ -25,7 +25,7 @@
   <!-- Show a list of tags under that category -->
   <div *ngFor="let tag of tagsList" role="listitem" class="d-inline">
     <a *ngIf="tag.category===currentCategoryId" routerLink="{{'/'+tag.link}}" >
-      <span class="badge badge-secondary tag mb-3 mt-3">{{'#'+tag.name}}</span>
+      <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
     </a>
   </div>
   <!-- Show documentaries under that category -->
