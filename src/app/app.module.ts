@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, SecurityContext } from '@angular/core';
-import { FormsModule, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
@@ -11,7 +11,6 @@ import { FilterPipe } from './search/filter.pipe';
 import { SearchComponent } from './search/search.component';
 
 // Firebase
-import { FirebaseComponent } from './firebase/firebase.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -34,7 +33,6 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     // Pages
     AppComponent,
-    FirebaseComponent,
     AboutComponent,
     CategoriesComponent,
     DocumentariesComponent,

@@ -9,6 +9,10 @@ export class TagService {
   tagsList: any;
   tagsByCategory: Array<string>;
 
+  tagId: string;
+  tagName: string;
+  categoryId: string;
+
   constructor(
     private db: AngularFirestore
   ) { }

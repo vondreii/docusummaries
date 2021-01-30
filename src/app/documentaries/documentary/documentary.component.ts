@@ -44,5 +44,4 @@ export class DocumentaryComponent implements OnInit {
     });
     console.log("Current Doco: " + this.currentDoco.name + ", " + this.currentDoco.studio);
   }
-
 }

@@ -24,6 +24,7 @@ export class DocumentariesComponent implements OnInit {
   currentTag: string = "";
   currentCategoryId: string = "";
   currentCategory: string = "";
+  categoryLink: string = "";
   isTag: boolean = false;
 
   constructor(
@@ -41,8 +42,6 @@ export class DocumentariesComponent implements OnInit {
 
   // Provide a list of documentaries
   ngOnInit(): void {
-    this.currentTag = "";
-    this.currentCategory = "";
     this.listDocos();
   }
 
@@ -57,9 +56,7 @@ export class DocumentariesComponent implements OnInit {
     this.currentTagId = "";
     this.currentCategoryId = "";
 
-
     this.getCurrentTag();
-    this.getCurrentCategory();
   }
 
   // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
@@ -69,18 +66,27 @@ export class DocumentariesComponent implements OnInit {
       if(this.linkRoute.match(tag.link.toString())){
         this.currentTagId = tag.id;
         this.currentTag = tag.name;
+        this.currentCategoryId = tag.category;
       }
     });
     console.log("Tag Pipeline: " + this.currentTag);
+    
+    this.getCurrentCategory();
   }
 
   // Find the current category of the page (eg, find if the user selected 'health'). 
   async getCurrentCategory() {
     this.categoryList = await this.categoryService.readFromDB();
     this.categoryList.forEach(category => {
+      // If navigating to the page for a tag
       if(this.linkRoute.match(category.link.toString())){
         this.currentCategoryId = category.id;
         this.currentCategory = category.name;
+      }
+      // If on a page displaying a category, also display category for the tag
+      if(this.currentCategoryId.match(category.id.toString())){
+        this.currentCategory = category.name;
+        this.categoryLink = category.link;
       }
     });
     console.log("Category Pipeline: " + this.currentCategory);
