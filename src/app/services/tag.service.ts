@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Tag } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,13 @@ export class TagService {
   readFromDB() {
     return new Promise<any>((resolve)=> {
       this.db.collection('tag').valueChanges({ idField: 'id' }).subscribe(tags => resolve(tags));
+    })
+  }
+
+  // Returns a single tag entry, based on the id
+  getTagEntry(id: string) {
+    return new Promise<Tag>((resolve)=> {
+      this.db.collection('tag').doc(id).valueChanges().subscribe((tag: Tag) => resolve(tag));
     })
   }
 

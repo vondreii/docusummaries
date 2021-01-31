@@ -1,19 +1,19 @@
 <!-- Breadcrumbs -->
 <span class="breadcrumbs">
   <a routerLink="/">All Categories</a> >> 
-  <a routerLink="/{{categoryLink}}">{{currentCategory}}</a> >> 
-  {{currentTag}}
+  <a routerLink="/{{currentCategory.link}}">{{currentCategory.name}}</a> >> 
+  {{currentTag.name}}
 </span>
 <!-- Heading and description -->
-<h2> {{currentTag}} </h2>
+<h2> {{currentTag.name}} </h2>
 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <div class="tagslist"></div>
 <div *ngFor="let doco of documentariesList | async"  role="listitem">
   <!-- If user selected to only show docos for a specific tag -->
   <div *ngFor="let tag of doco.tags"  role="listitem">
-    <div *ngIf="tag===currentTagId" class="whiteBox"> 
+    <div *ngIf="tag===currentTag.id" class="whiteBox"> 
       <!-- Display their details -->
-      <h4><strong> {{doco.name}} </strong></h4>
+      <h4><strong>{{doco.name}}</strong></h4>
       <p>{{doco.description}}</p>
       <p>{{doco.studio}}</p>
       <p>{{doco.tags}}</p>

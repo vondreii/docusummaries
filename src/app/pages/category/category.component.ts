@@ -3,6 +3,7 @@ import { DocumentaryService } from '../../services/documentary.service';
 import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
+import { Category } from 'src/app/models/models';
 
 @Component({
   selector: 'app-category',
@@ -11,21 +12,15 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoryComponent implements OnInit {
 
+  // The current category we are viewing
+  currentCategory: Category = {name: "", link: "", id: ""};
+
   // For the url at the top
   linkRoute: string;
 
-  // Tag and documentary data from DB
+  // List of tags and docos for this category
   tagsList: any;
   documentariesList: any;
-  categoryList: any;
-
-  // Used for only displaying current categories
-  currentTagId: string = "";
-  currentTag: string = "";
-  currentCategoryId: string = "";
-  currentCategory: string = "";
-  categoryLink: string = "";
-  isTag: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,56 +34,37 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  // Provide a list of documentaries
   ngOnInit(): void {
+    // Provide a list of documentaries
     this.listDocos();
   }
 
-  // Only list documentaries that match the tag, eg 'aircrash'.
   listDocos() {
+    // Resets page on reload
+    this.currentCategory = {name: "", link: "", id: ""};
+
+    // Get the url from the window
     let url = window.location.href;
     this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
+
+    // Get the current category, a list of all documentaries and tags
     this.documentariesList = this.docoService.readFromDB();
-
-    this.currentTag = "";
-    this.currentCategory = "";
-    this.currentTagId = "";
-    this.currentCategoryId = "";
-
-    this.getCurrentTag();
+    this.getAllTags().then(() => {
+      this.getCurrentCategory();
+    });
   }
 
-  // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-  async getCurrentTag() {
+  async getAllTags() {
+    // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
     this.tagsList = await this.tagService.readFromDB();
-    this.tagsList.forEach(tag => {
-      if(this.linkRoute.match(tag.link.toString())){
-        this.currentTagId = tag.id;
-        this.currentTag = tag.name;
-        this.currentCategoryId = tag.category;
-      }
-    });
-    console.log("Tag Pipeline: " + this.currentTag);
-    
-    this.getCurrentCategory();
   }
 
-  // Find the current category of the page (eg, find if the user selected 'health'). 
   async getCurrentCategory() {
-    this.categoryList = await this.categoryService.readFromDB();
-    this.categoryList.forEach(category => {
-      // If navigating to the page for a tag
-      if(this.linkRoute.match(category.link.toString())){
-        this.currentCategoryId = category.id;
-        this.currentCategory = category.name;
-      }
-      // If on a page displaying a category, also display category for the tag
-      if(this.currentCategoryId.match(category.id.toString())){
-        this.currentCategory = category.name;
-        this.categoryLink = category.link;
-      }
+    // Find the current category of the page (eg, find if the user selected 'health'). 
+    this.categoryService.getCategoryEntry("id-"+this.linkRoute).then(category => {
+      this.currentCategory = category;
+      this.currentCategory.id = "id-"+this.linkRoute;
+      console.log("Entered: " + this.currentCategory.name);
     });
-    console.log("Category Pipeline: " + this.currentCategory);
   }
-
 }

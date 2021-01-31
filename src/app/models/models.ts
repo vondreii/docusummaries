@@ -7,3 +7,16 @@ export class Documentary {
   tags: Array<string> = ["Fetching..."];
   topic: string = "Fetching...";
 }
+
+export class Category {
+  id: string = "";
+  name: string = "";
+  link: string = "";
+}
+
+export class Tag {
+  category: string = "";
+  link: string = "";
+  name: string = "";
+  id: string= "";
+}
