@@ -22,30 +22,30 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // Main pages
 import { AboutComponent } from './about/about.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { DocumentariesComponent } from './documentaries/documentaries.component';
-import { DocumentaryComponent } from './documentaries/documentary/documentary.component';
 import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { CategoryComponent } from './category/category.component';
+import { TagComponent } from './tag/tag.component';
+import { DocumentaryComponent } from './documentary/documentary.component';
 
 @NgModule({
   declarations: [
     // Pages
     AppComponent,
     AboutComponent,
-    CategoriesComponent,
-    DocumentariesComponent,
+    HomeComponent,
+    CategoryComponent,
     DocumentaryComponent,
+    AdminComponent,
+    NavbarComponent,
+    ContactComponent,
     // Searchbar
     HighlightDirective,
     FilterPipe,
     SearchComponent,
-    AdminComponent,
-    NavbarComponent,
-    ContactComponent,
-    HomeComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

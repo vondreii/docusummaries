@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoryComponent implements OnInit {
 
   // For the url at the top
   linkRoute: string;
@@ -90,4 +90,5 @@ export class CategoriesComponent implements OnInit {
     });
     console.log("Category Pipeline: " + this.currentCategory);
   }
+
 }
