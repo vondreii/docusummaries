@@ -1,3 +1,27 @@
+::ng-deep .jumbotron {
+  background-color: #0f0e17;
+  color: rgb(235, 233, 233);
+  border-radius: 0px;
+}
+::ng-deep .jumbotron .tag {
+  background-color: #ff9c2a;
+  padding: 20px
+}
+::ng-deep .jumbotron .tag:hover {
+  background-color: #ffc079;
+}
+.jumbo {
+  padding: 150px 300px; 
+}
+
+@media screen and (max-width: 1200px) {
+  .jumbo {
+    padding: 50px 10px; 
+  }
+}
+
+
+
 .categoryHeading {
   border-bottom: 5px solid rgb(97, 134, 172);
   text-decoration: none;
@@ -12,7 +36,15 @@
 .desc {
   padding-top: 10px;
 }
+
+.taglink {
+  padding-right: 20px;
+}
+.tag {
+  margin-right: 10px;
+  font-size: 16px;
+}
 .tag:hover {
-  background-color: #9c9c9c;
+  background-color: #ffb055;
   transition: 0.3s
 }

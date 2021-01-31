@@ -20,7 +20,14 @@ export class HomeComponent implements OnInit {
 
   // Read and Store Categories and Tags
   ngOnInit(): void {
-    this.categoryList = this.categoryService.readFromDB();
-    this.tagsList = this.tagService.readFromDB();
+    this.getCategoryList();
+    this.getTagsList();
+  }
+
+  async getCategoryList() {
+    this.categoryList = await this.categoryService.readFromDB();
+  }
+  async getTagsList() {
+    this.tagsList = await this.tagService.readFromDB();
   }
 }

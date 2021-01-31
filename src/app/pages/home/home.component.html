@@ -1,18 +1,35 @@
-<!-- Loop through every category -->
-<div *ngFor="let category of categoryList | async"  role="listitem">
-  <div class="whiteBox">
-    <!-- Category Heading -->
-    <h3><a class="categoryHeading" routerLink="{{category.link}}">{{category.name}}</a></h3>
-    <!-- Category Description -->
-    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <!-- Display all related tags underneath the category -->
-    <div *ngFor="let tag of tagsList | async"  role="listitem" class="d-inline">
-      <a *ngIf="tag.category===category.id" routerLink="{{tag.link}}" >
-        <span class="badge badge-secondary mb-3 mt-3 tag" style="font-size: 16px">#{{tag.name}}</span>
-      </a>
+<!-- Jumbotron at the top with the searchbar -->
+<div class="jumbotron">
+  <div class="jumbo">
+    <h1>Doco Summaries</h1>
+    <p>Search blah blah Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor!</p>
+    <app-search></app-search>
+    <div class="tagslist">
+      <span *ngFor="let tag of tagsList | slice: 0:6; let i=index" role="listitem" class="d-inline" >
+        <a routerLink="{{'/'+tag.link}}" >
+          <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
+        </a>
+      </span>
     </div>
-    <!-- End of tags list -->
   </div>
 </div>
-<!-- End of Category loop -->
+<div class="pageContent">
+  <!-- Loop through every category -->
+  <div *ngFor="let category of categoryList"  role="listitem">
+    <div class="whiteBox">
+      <!-- Category Heading -->
+      <h3><a class="categoryHeading" routerLink="{{category.link}}">{{category.name}}</a></h3>
+      <!-- Category Description -->
+      <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <!-- Display all related tags underneath the category -->
+      <div *ngFor="let tag of tagsList"  role="listitem" class="d-inline">
+        <a *ngIf="tag.category===category.id" routerLink="{{tag.link}}" >
+          <span class="badge badge-secondary mb-3 mt-3 tag" style="font-size: 16px">#{{tag.name}}</span>
+        </a>
+      </div>
+      <!-- End of tags list -->
+    </div>
+  </div>
+  <!-- End of Category loop -->
+</div>
 

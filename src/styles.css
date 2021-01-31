@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 .dark{
-  background-color: rgb(27, 28, 37);
+  background-color: #0f0e17 
 }
 .light{
-  background-color:#d6dce4
+  background-color: #d6dce4;
 }
 .tag {
   margin-right: 10px;
   font-size: 16px
 }
 .pageContent {
-  padding: 30px 80px; 
+  padding: 70px 300px; 
 }
 .pageHeading {
   margin-top: 20px;
@@ -50,6 +50,11 @@
 /* Medium screens */
 @media screen and (max-width: 1200px) {
   .pageContent {
-    padding: 0px 0px; 
+    padding: 70px 100px; 
+  }
+}
+@media screen and (max-width: 800px) {
+  .pageContent {
+    padding: 100px 20px; 
   }
 }
