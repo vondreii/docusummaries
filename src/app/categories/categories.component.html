@@ -1,18 +1,28 @@
-<!-- Loop through every category -->
-<div *ngFor="let category of categoryList | async"  role="listitem">
-  <div class="whiteBox">
-    <!-- Category Heading -->
-    <h3><a class="categoryHeading" routerLink="{{category.link}}">{{category.name}}</a></h3>
-    <!-- Category Description -->
-    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <!-- Display all related tags underneath the category -->
-    <div *ngFor="let tag of tagsList | async"  role="listitem" class="d-inline">
-      <a *ngIf="tag.category===category.id" routerLink="{{tag.link}}" >
-        <span class="badge badge-secondary mb-3 mt-3 tag" style="font-size: 16px">#{{tag.name}}</span>
-      </a>
-    </div>
-    <!-- End of tags list -->
+<!-- Breadcrumbs -->
+<span class="breadcrumbs">
+  <a routerLink="/">All Categories</a> >> {{currentCategory}}
+</span>
+<!-- Heading and description -->
+<h2>{{currentCategory}}</h2>
+<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<!-- Show a list of tags under that category -->
+<div class="tagslist">
+  <div *ngFor="let tag of tagsList" role="listitem" class="d-inline">
+    <a *ngIf="tag.category===currentCategoryId" routerLink="{{'/'+tag.link}}" >
+      <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
+    </a>
   </div>
 </div>
-<!-- End of Category loop -->
-
+<!-- Show documentaries under that category -->
+<div *ngFor="let doco of documentariesList | async"  role="listitem">
+  <div *ngIf="doco.category===currentCategoryId" class="whiteBox"> 
+    <!-- Display their details -->
+    <h4><strong> {{doco.name}} </strong></h4>
+    <p>{{doco.description}}</p>
+    <p>{{doco.studio}}</p>
+    <p>{{doco.tags}}</p>
+    <p>{{doco.category}}</p>
+    <a routerLink="{{doco.link}}"> READ MORE >></a>
+    <!-- End of details -->
+  </div>
+</div>

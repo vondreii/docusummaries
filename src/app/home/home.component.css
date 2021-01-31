@@ -7,31 +7,12 @@
 }
 .categoryHeading:hover {
   border-bottom: 5px solid rgb(160, 188, 216);
-  text-decoration: none;
   color: #cccccc;
-  transition: 0.3s
 }
 .desc {
   padding-top: 10px;
 }
-.taglink {
-  padding-right: 20px;
-}
-.tag {
-  margin-right: 10px;
-  font-size: 16px;
-}
 .tag:hover {
   background-color: #9c9c9c;
   transition: 0.3s
-}
-.tagslist {
-  margin-bottom: 50px;
-}
-h2 {
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-h4 {
-  color: rgb(126, 126, 126);
 }

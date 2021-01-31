@@ -50,7 +50,7 @@ export class DocumentariesComponent implements OnInit {
     let url = window.location.href;
     this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
     this.documentariesList = this.docoService.readFromDB();
-
+    console.log(this.linkRoute);
     this.currentTag = "";
     this.currentCategory = "";
     this.currentTagId = "";
@@ -63,7 +63,7 @@ export class DocumentariesComponent implements OnInit {
   async getCurrentTag() {
     this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {
-      if(this.linkRoute.match(tag.link.toString())){
+      if(this.linkRoute.match(tag.link.substring(tag.link.lastIndexOf("/")+1, tag.link.length))){
         this.currentTagId = tag.id;
         this.currentTag = tag.name;
         this.currentCategoryId = tag.category;

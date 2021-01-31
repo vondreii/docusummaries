@@ -28,6 +28,7 @@ import { DocumentaryComponent } from './documentaries/documentary/documentary.co
 import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ContactComponent } from './contact/contact.component';
     AdminComponent,
     NavbarComponent,
     ContactComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

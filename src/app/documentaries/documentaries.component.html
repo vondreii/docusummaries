@@ -1,59 +1,24 @@
-<!-- If viewing docos by tag -->
-<div *ngIf="currentTag!=''; else categoryHeading"> 
-  <!-- Breadcrumbs -->
-  <span class="breadcrumbs">
-    <a routerLink="/">Categories</a> >> 
-    <a routerLink="/{{categoryLink}}">{{currentCategory}}</a> >> 
-    {{currentTag}}
-  </span>
-  <!-- Heading and description -->
-  <h2> {{currentTag}} </h2>
-  <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <div class="tagslist"></div>
-  <div *ngFor="let doco of documentariesList | async"  role="listitem">
-    <!-- If user selected to only show docos for a specific tag -->
-    <div *ngFor="let tag of doco.tags"  role="listitem">
-      <div *ngIf="tag===currentTagId" class="whiteBox"> 
-        <!-- Display their details -->
-        <h4><strong> {{doco.name}} </strong></h4>
-        <p>{{doco.description}}</p>
-        <p>{{doco.studio}}</p>
-        <p>{{doco.tags}}</p>
-        <a routerLink="{{doco.link}}"> READ MORE >></a>
-        <!-- End of details -->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- If viewing docos by a specific category -->
-<ng-template #categoryHeading>
-  <!-- Breadcrumbs -->
-  <span class="breadcrumbs">
-    <a routerLink="/">Categories</a> >> {{currentCategory}}
-  </span>
-  <!-- Heading and description -->
-  <h2>{{currentCategory}}</h2>
-  <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <!-- Show a list of tags under that category -->
-  <div class="tagslist">
-    <div *ngFor="let tag of tagsList" role="listitem" class="d-inline">
-      <a *ngIf="tag.category===currentCategoryId" routerLink="{{'/'+tag.link}}" >
-        <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
-      </a>
-    </div>
-  </div>
-  <!-- Show documentaries under that category -->
-  <div *ngFor="let doco of documentariesList | async"  role="listitem">
-    <div *ngIf="doco.category===currentCategoryId" class="whiteBox"> 
+<!-- Breadcrumbs -->
+<span class="breadcrumbs">
+  <a routerLink="/">All Categories</a> >> 
+  <a routerLink="/{{categoryLink}}">{{currentCategory}}</a> >> 
+  {{currentTag}}
+</span>
+<!-- Heading and description -->
+<h2> {{currentTag}} </h2>
+<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="tagslist"></div>
+<div *ngFor="let doco of documentariesList | async"  role="listitem">
+  <!-- If user selected to only show docos for a specific tag -->
+  <div *ngFor="let tag of doco.tags"  role="listitem">
+    <div *ngIf="tag===currentTagId" class="whiteBox"> 
       <!-- Display their details -->
       <h4><strong> {{doco.name}} </strong></h4>
       <p>{{doco.description}}</p>
       <p>{{doco.studio}}</p>
       <p>{{doco.tags}}</p>
-      <p>{{doco.category}}</p>
       <a routerLink="{{doco.link}}"> READ MORE >></a>
       <!-- End of details -->
     </div>
   </div>
-</ng-template>
-
+</div>
