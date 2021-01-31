@@ -1,13 +1,24 @@
+<!-- Breadcrumbs -->
+<span class="breadcrumbs">
+  <a routerLink="/">All Categories</a> >> 
+  <a routerLink="/{{currentCategory.link}}">{{currentCategory.name}}</a> >> 
+  {{currentDoco.name}}
+</span>
 <!-- Print the info of the selected documentary -->
 <h2>{{currentDoco.name}}</h2>
 <br>
 <div class="whiteBox">
   <p><b>Description:</b> {{currentDoco.description}}</p>
-  <p><b>Find on Youtube:</b> <a href="{{currentDoco.linkToDoco}}">{{currentDoco.linkToDoco}}</a></p> 
+  <p><b>Find on Youtube: </b> <a href="{{currentDoco.linkToDoco}}">{{currentDoco.linkToDoco}}</a></p> 
   <p><b>Producer:</b> {{currentDoco.producer}}</p>
   <p><b>Studio:</b> {{currentDoco.studio}}</p>
-  <p><b>Tags:</b> {{currentDoco.tags}}</p>
-  <p><b>Topic:</b> {{currentDoco.topic}}</p>
+  <div class="tagslist">
+    <div *ngFor="let tag of relatedTags" role="listitem" class="d-inline">
+      <a routerLink="{{'/'+tag.link}}" >
+        <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
+      </a>
+    </div>
+  </div>
   <div markdown [src]="post"></div>
 </div>
 

@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
   currentCategory: Category = {name: "", link: "", id: ""};
 
   // For the url at the top
-  linkRoute: string;
+  categorylinkRoute: string;
 
   // List of tags and docos for this category
   tagsList: any;
@@ -45,7 +45,7 @@ export class CategoryComponent implements OnInit {
 
     // Get the url from the window
     let url = window.location.href;
-    this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
+    this.categorylinkRoute = this.categoryService.getUrlDirectory(url, false);
 
     // Get the current category, a list of all documentaries and tags
     this.documentariesList = this.docoService.readFromDB();
@@ -61,9 +61,9 @@ export class CategoryComponent implements OnInit {
 
   async getCurrentCategory() {
     // Find the current category of the page (eg, find if the user selected 'health'). 
-    this.categoryService.getCategoryEntry("id-"+this.linkRoute).then(category => {
+    this.categoryService.getCategoryEntry("id-"+this.categorylinkRoute).then(category => {
       this.currentCategory = category;
-      this.currentCategory.id = "id-"+this.linkRoute;
+      this.currentCategory.id = "id-"+this.categorylinkRoute;
       console.log("Entered: " + this.currentCategory.name);
     });
   }

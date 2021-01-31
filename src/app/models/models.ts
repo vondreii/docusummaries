@@ -4,6 +4,7 @@ export class Documentary {
   linkToDoco: string = "";
   producer: string = "Fetching...";
   studio: string = "Fetching...";
+  category: string = "Fetching...";
   tags: Array<string> = ["Fetching..."];
   topic: string = "Fetching...";
 }

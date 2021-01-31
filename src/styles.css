@@ -29,6 +29,7 @@
 /* Breadcrumbs */
 .breadcrumbs {
   color: #272727;
+  line-height: 2;
 }
 .breadcrumbs a {
   color: #272727;

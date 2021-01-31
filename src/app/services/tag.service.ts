@@ -24,14 +24,16 @@ export class TagService {
       this.db.collection('tag').valueChanges({ idField: 'id' }).subscribe(tags => resolve(tags));
     })
   }
-
   // Returns a single tag entry, based on the id
   getTagEntry(id: string) {
     return new Promise<Tag>((resolve)=> {
       this.db.collection('tag').doc(id).valueChanges().subscribe((tag: Tag) => resolve(tag));
     })
   }
-
+  // Gets the directory of the tag part of the URL
+  getUrlDirectory(url: string) {
+    return url.substring(url.lastIndexOf("/")+1, url.length);
+  }
   // Return all Tag objects under a specific category
   async readTagsByCategory(category: string) {
     this.tagsByCategory = new Array<string>()

@@ -14,10 +14,11 @@ export class TagComponent implements OnInit {
 
   // The current category we are viewing
   currentCategory: Category = {name: "", link: "", id: ""};
-  currentTag: Tag = {name: "", link: "", id: "", category: ""}
+  currentTag: Tag = {name: "", link: "", id: "", category: ""};
 
   // For the url at the top
-  linkRoute: string;
+  tagLinkRoute: string;
+  categoryLinkRoute: string;
 
   // Tag and documentary data from DB
   tagsList: any;
@@ -47,8 +48,9 @@ export class TagComponent implements OnInit {
 
     // Get the url from the window
     let url = window.location.href;
-    this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
-    
+    this.tagLinkRoute = this.tagService.getUrlDirectory(url);
+    this.categoryLinkRoute = this.categoryService.getUrlDirectory(url, true);
+
     // Get the current category/tag, a list of all documentaries
     this.documentariesList = this.docoService.readFromDB();
     this.getCurrentTag();
@@ -56,19 +58,20 @@ export class TagComponent implements OnInit {
 
   async getCurrentTag() {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-    this.tagService.getTagEntry("id-"+this.linkRoute).then(tag => {
+    this.tagService.getTagEntry("id-"+this.tagLinkRoute).then(tag => {
       this.currentTag = tag;
-      this.currentTag.id = "id-"+this.linkRoute;
-      console.log("Entered: "+this.currentTag.name);
+      this.currentTag.id = "id-"+this.tagLinkRoute;
       this.getCurrentCategory();
     });
   }
 
   async getCurrentCategory() {
     // Find the current category of the page (eg, find if the user selected 'health'). 
-    this.categoryService.getCategoryEntry(this.currentTag.category).then(category => {
+    this.categoryService.getCategoryEntry("id-"+this.categoryLinkRoute).then(category => {
+      console.log("Entered: "+category);
       this.currentCategory = category;
-      this.currentCategory.id = "id-"+this.linkRoute;
+      this.currentCategory.id = "id-"+this.tagLinkRoute;
+      console.log(this.currentCategory.name);
     });
   }
 }

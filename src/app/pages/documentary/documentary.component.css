@@ -1,0 +1,15 @@
+h2 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.taglink {
+  padding-right: 20px;
+}
+.tag {
+  margin-right: 10px;
+  font-size: 16px;
+}
+.tag:hover {
+  background-color: #9c9c9c;
+  transition: 0.3s
+}
