@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentaryService } from '../services/documentary.service';
-import { TagService } from '../services/tag.service';
+import { DocumentaryService } from '../../services/documentary.service';
+import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from '../services/category.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
-  selector: 'app-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
-export class TagComponent implements OnInit {
+export class CategoryComponent implements OnInit {
 
   // For the url at the top
   linkRoute: string;
@@ -36,7 +36,6 @@ export class TagComponent implements OnInit {
     // params is the :id (unique value) from the link (eg 'aircrash' from /categories/aircrash). 
     this.route.params.subscribe(params => {
       this.listDocos();
-      console.log(params);
     });
   }
 
@@ -50,7 +49,7 @@ export class TagComponent implements OnInit {
     let url = window.location.href;
     this.linkRoute = url.substring(url.lastIndexOf("/")+1, url.length);
     this.documentariesList = this.docoService.readFromDB();
-    console.log(this.linkRoute);
+
     this.currentTag = "";
     this.currentCategory = "";
     this.currentTagId = "";
@@ -63,7 +62,7 @@ export class TagComponent implements OnInit {
   async getCurrentTag() {
     this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {
-      if(this.linkRoute.match(tag.link.substring(tag.link.lastIndexOf("/")+1, tag.link.length))){
+      if(this.linkRoute.match(tag.link.toString())){
         this.currentTagId = tag.id;
         this.currentTag = tag.name;
         this.currentCategoryId = tag.category;

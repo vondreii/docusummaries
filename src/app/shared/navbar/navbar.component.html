@@ -22,7 +22,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdown07">
               <!-- Show link for each category -->
               <div *ngFor="let category of categoryList | async"  role="listitem">
-                <a class="dropdown-item" href="/{{category.link}}">{{category.name}}</a>
+                <a class="dropdown-item" routerLink="/{{category.link}}">{{category.name}}</a>
               </div>
             </div>
           </li>

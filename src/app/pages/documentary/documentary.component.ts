@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DocumentaryService } from '../services/documentary.service';
-import { Documentary } from '../models/models';
+import { DocumentaryService } from '../../services/documentary.service';
+import { Documentary } from '../../models/models';
 
 @Component({
   selector: 'app-documentary',

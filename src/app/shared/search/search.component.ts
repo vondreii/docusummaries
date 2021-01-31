@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TagService } from '../services/tag.service';
-import { DocumentaryService } from '../services/documentary.service';
-import { CategoryService } from '../services/category.service';
+import { TagService } from '../../services/tag.service';
+import { DocumentaryService } from '../../services/documentary.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-search',

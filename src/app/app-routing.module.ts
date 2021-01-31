@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { AdminComponent } from './admin/admin.component';
-import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
-import { CategoryComponent } from './category/category.component';
-import { TagComponent } from './tag/tag.component';
-import { DocumentaryComponent } from './documentary/documentary.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { TagComponent } from './pages/tag/tag.component';
+import { DocumentaryComponent } from './pages/documentary/documentary.component';
 
 const routes: Routes = [
-  // { path: '', component: CategoriesComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },

@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { environment } from "../environments/environment";
 
 // Searchbar
-import { HighlightDirective } from './search/highlight.directive';
-import { FilterPipe } from './search/filter.pipe';
-import { SearchComponent } from './search/search.component';
+// import { HighlightDirective } from './shared/search/highlight.directive';
+// import { FilterPipe } from './shared/search/filter.pipe';
+// import { SearchComponent } from './shared/search/search.component';
 
 // Firebase
 import { AngularFireModule } from "@angular/fire";
@@ -21,14 +21,14 @@ import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // Main pages
-import { AboutComponent } from './about/about.component';
-import { AdminComponent } from './admin/admin.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
-import { CategoryComponent } from './category/category.component';
-import { TagComponent } from './tag/tag.component';
-import { DocumentaryComponent } from './documentary/documentary.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { TagComponent } from './pages/tag/tag.component';
+import { DocumentaryComponent } from './pages/documentary/documentary.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -39,15 +39,15 @@ import { DocumentaryComponent } from './documentary/documentary.component';
     CategoryComponent,
     DocumentaryComponent,
     AdminComponent,
-    NavbarComponent,
     ContactComponent,
-    // Searchbar
-    HighlightDirective,
-    FilterPipe,
-    SearchComponent,
     TagComponent
+    // Searchbar
+    // HighlightDirective,
+    // FilterPipe,
+    // SearchComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
