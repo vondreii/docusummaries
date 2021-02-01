@@ -2,6 +2,7 @@ export class Documentary {
   name: string = "Loading...";
   description: string = "Fetching...";
   linkToDoco: string = "";
+  link: string = "";
   producer: string = "Fetching...";
   studio: string = "Fetching...";
   category: string = "Fetching...";

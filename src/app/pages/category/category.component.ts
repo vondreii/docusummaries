@@ -3,7 +3,7 @@ import { DocumentaryService } from '../../services/documentary.service';
 import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
-import { Category } from 'src/app/models/models';
+import { Category, Documentary, Tag } from 'src/app/models/models';
 
 @Component({
   selector: 'app-category',
@@ -19,8 +19,8 @@ export class CategoryComponent implements OnInit {
   categorylinkRoute: string;
 
   // List of tags and docos for this category
-  tagsList: any;
-  documentariesList: any;
+  tagsInCategory: Array<Tag> = [];
+  documentariesList: Array<Documentary> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -48,15 +48,18 @@ export class CategoryComponent implements OnInit {
     this.categorylinkRoute = this.categoryService.getUrlDirectory(url, false);
 
     // Get the current category, a list of all documentaries and tags
-    this.documentariesList = this.docoService.readFromDB();
     this.getAllTags().then(() => {
-      this.getCurrentCategory();
+      this.getCurrentCategory().then(() => {
+        this.getAllDocos();
+      });
     });
   }
 
   async getAllTags() {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-    this.tagsList = await this.tagService.readFromDB();
+    let tagsList = await this.tagService.readFromDB();
+    // Only get the tags for this category
+    this.tagsInCategory = this.tagService.getTagsForCategory(tagsList, "id-"+this.categorylinkRoute);
   }
 
   async getCurrentCategory() {
@@ -66,5 +69,12 @@ export class CategoryComponent implements OnInit {
       this.currentCategory.id = "id-"+this.categorylinkRoute;
       console.log("Entered: " + this.currentCategory.name);
     });
+  }
+
+  async getAllDocos() {
+    // Gets a list of all Docos
+    let allDocos = await this.docoService.readFromDB();
+    // Filters the docos to only get the docos for the category
+    this.documentariesList = this.docoService.getAllDocosForCategory(allDocos, this.currentCategory.id);
   }
 }

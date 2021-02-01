@@ -30,6 +30,18 @@ export class TagService {
       this.db.collection('tag').doc(id).valueChanges().subscribe((tag: Tag) => resolve(tag));
     })
   }
+  // Gets all tags under a category
+  getTagsForCategory(tagsList: any, currentCategory: string) {
+    let tagsInCategory = [];
+    tagsList.forEach(tag => {
+      if(tag.category==currentCategory) {
+        if (!tagsInCategory.some(e => e.id === tag.id)) {
+          tagsInCategory.push(tag);
+        }
+      }
+    });
+    return tagsInCategory;
+  }
   // Gets the directory of the tag part of the URL
   getUrlDirectory(url: string) {
     return url.substring(url.lastIndexOf("/")+1, url.length);
