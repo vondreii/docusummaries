@@ -3,7 +3,7 @@ import { DocumentaryService } from '../../services/documentary.service';
 import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
-import { Category, Tag } from 'src/app/models/models';
+import { Category, Documentary, Tag } from 'src/app/models/models';
 
 @Component({
   selector: 'app-tag',
@@ -22,7 +22,7 @@ export class TagComponent implements OnInit {
 
   // Tag and documentary data from DB
   tagsList: any;
-  documentariesList: any;
+  documentariesList: Array<Documentary> = [];
   
   constructor(
     private route: ActivatedRoute,
@@ -52,8 +52,10 @@ export class TagComponent implements OnInit {
     this.categoryLinkRoute = this.categoryService.getUrlDirectory(url, true);
 
     // Get the current category/tag, a list of all documentaries
-    this.documentariesList = this.docoService.readFromDB();
-    this.getCurrentTag();
+    // this.documentariesList = this.docoService.readFromDB();
+    this.getCurrentTag().then(() => {
+      this.getAllDocos();
+    });
   }
 
   async getCurrentTag() {
@@ -68,10 +70,15 @@ export class TagComponent implements OnInit {
   async getCurrentCategory() {
     // Find the current category of the page (eg, find if the user selected 'health'). 
     this.categoryService.getCategoryEntry("id-"+this.categoryLinkRoute).then(category => {
-      console.log("Entered: "+category);
       this.currentCategory = category;
       this.currentCategory.id = "id-"+this.tagLinkRoute;
-      console.log(this.currentCategory.name);
     });
+  }
+
+  async getAllDocos() {
+    // Gets a list of all Docos
+    let allDocos = await this.docoService.readFromDB();
+    // Returns a list of docos only for the specific tag
+    this.documentariesList = this.docoService.getAllDocosForTag(allDocos, this.currentTag.id);
   }
 }
