@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Category, Documentary } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,14 @@ export class DocumentaryService {
     })
   }
   // Gets all Docos for a Category
-  getAllDocosForCategory(allDocos: any, currentCategory) {
-    let docosForCategory = [];
+  getAllDocosForCategory(allDocos: any, currentCategory: Category) {
+    let docosForCategory = Array<Documentary>();
     allDocos.forEach(doco => {
-      if(doco.category==currentCategory) {
+      if(doco.category==currentCategory.id) {
         if (!docosForCategory.some(e => e.link === doco.link)) {
           docosForCategory.push(doco);
+          docosForCategory[docosForCategory.length-1].categoryObj = currentCategory;
+          // docosForCategory.find(doco).categoryObj.name = currentCategory.name;
         }
       }
     });

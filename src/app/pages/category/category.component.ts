@@ -75,6 +75,6 @@ export class CategoryComponent implements OnInit {
     // Gets a list of all Docos
     let allDocos = await this.docoService.readFromDB();
     // Filters the docos to only get the docos for the category
-    this.documentariesList = this.docoService.getAllDocosForCategory(allDocos, this.currentCategory.id);
+    this.documentariesList = this.docoService.getAllDocosForCategory(allDocos, this.currentCategory);
   }
 }

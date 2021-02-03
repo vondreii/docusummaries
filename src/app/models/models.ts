@@ -6,6 +6,7 @@ export class Documentary {
   producer: string = "Fetching...";
   studio: string = "Fetching...";
   category: string = "Fetching...";
+  categoryObj: Category = new Category();
   tags: Array<string> = ["Fetching..."];
   topic: string = "Fetching...";
 }

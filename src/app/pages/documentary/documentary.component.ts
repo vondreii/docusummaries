@@ -55,7 +55,6 @@ export class DocumentaryComponent implements OnInit {
         this.currentDoco = doco;
       }
     });
-    console.log("Current Doco: " + this.currentDoco.name + ", " + this.currentDoco.category);
   }
 
   async getRelatedTags() {
@@ -71,6 +70,6 @@ export class DocumentaryComponent implements OnInit {
   async getCurrentCategory() {
     // Finds the category that the doco is listed under.
     this.currentCategory = await this.categoryService.getCategoryEntry(this.currentDoco.category);
-    console.log(this.currentCategory.name);
+    // console.log(this.currentCategory.name);
   }
 }
