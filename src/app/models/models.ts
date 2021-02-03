@@ -8,6 +8,7 @@ export class Documentary {
   category: string = "Fetching...";
   categoryObj: Category = new Category();
   tags: Array<string> = ["Fetching..."];
+  tagObj: Array<Tag> = new Array<Tag>();
   topic: string = "Fetching...";
 }
 

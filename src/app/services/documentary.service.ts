@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Category, Documentary } from '../models/models';
+import { Category, Documentary, Tag } from '../models/models';
+import { TagService } from './tag.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocumentaryService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(
+    private db: AngularFirestore,
+    private tagService: TagService
+  ) { }
 
   // Return all Documentary objects from Firebase
   readFromDB() {
@@ -23,11 +27,21 @@ export class DocumentaryService {
         if (!docosForCategory.some(e => e.link === doco.link)) {
           docosForCategory.push(doco);
           docosForCategory[docosForCategory.length-1].categoryObj = currentCategory;
-          // docosForCategory.find(doco).categoryObj.name = currentCategory.name;
+          docosForCategory[docosForCategory.length-1].tagObj = this.getAllTagsForDoco(doco);
         }
       }
     });
     return docosForCategory;
+  }
+  // For a given doco, get all the tag objects for it
+  getAllTagsForDoco(doco: Documentary) {
+    let tagsArray: Array<Tag> = new Array<Tag>();
+    doco.tags.forEach(tagId => {
+      this.tagService.getTagEntry(tagId).then(tagEntry =>{
+        tagsArray.push(tagEntry)
+      });
+    });
+    return tagsArray;
   }
   // Gets all Docos for a tag
   getAllDocosForTag(allDocos: any, currentTag) {

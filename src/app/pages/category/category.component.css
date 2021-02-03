@@ -22,10 +22,10 @@
   font-size: 16px;
 }
 .tag:hover {
-  background-color: #9c9c9c;
+  background-color: #ffb055;
   transition: 0.3s
 }
-.tagslist {
+.margin-b {
   margin-bottom: 50px;
 }
 h2 {
