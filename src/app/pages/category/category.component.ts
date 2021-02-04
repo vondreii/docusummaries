@@ -4,6 +4,7 @@ import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { Category, Documentary, Tag } from 'src/app/models/models';
+import { Offline } from '../../models/global';
 
 @Component({
   selector: 'app-category',
@@ -46,7 +47,7 @@ export class CategoryComponent implements OnInit {
     // Get the url from the window
     let url = window.location.href;
     this.categorylinkRoute = this.categoryService.getUrlDirectory(url, false);
-
+    
     // Get the current category, a list of all documentaries and tags
     this.getAllTags().then(() => {
       this.getCurrentCategory().then(() => {
@@ -57,24 +58,43 @@ export class CategoryComponent implements OnInit {
 
   async getAllTags() {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-    let tagsList = await this.tagService.readFromDB();
+    let tagsList = [];
+    if (Offline) {
+      tagsList = this.tagService.readFromLocalStorage();
+    }
+    else {
+      tagsList = await this.tagService.readFromDB();
+    }
     // Only get the tags for this category
     this.tagsInCategory = this.tagService.getTagsForCategory(tagsList, "id-"+this.categorylinkRoute);
   }
 
   async getCurrentCategory() {
     // Find the current category of the page (eg, find if the user selected 'health'). 
-    this.categoryService.getCategoryEntry("id-"+this.categorylinkRoute).then(category => {
-      this.currentCategory = category;
-      this.currentCategory.id = "id-"+this.categorylinkRoute;
-      console.log("Entered: " + this.currentCategory.name);
-    });
+    if (Offline) {
+      this.currentCategory = this.categoryService.getCategoryEntryOffline("id-"+this.categorylinkRoute);
+    }
+    else {
+      this.categoryService.getCategoryEntry("id-"+this.categorylinkRoute).then(category => {
+        this.currentCategory = category;
+        this.currentCategory.id = "id-"+this.categorylinkRoute;
+        console.log("Entered: " + this.currentCategory.name);
+      });
+    }
   }
 
   async getAllDocos() {
-    // Gets a list of all Docos
-    let allDocos = await this.docoService.readFromDB();
-    // Filters the docos to only get the docos for the category
-    this.documentariesList = this.docoService.getAllDocosForCategory(allDocos, this.currentCategory);
+    // Gets a list of all docos for a specific category
+    let allDocos = [];
+    if (Offline) {
+      // Reads from local storage
+      allDocos = this.docoService.readFromLocalStorage();
+      this.documentariesList = this.docoService.getAllDocosForCategoryOffline(allDocos, this.currentCategory);
+    }
+    else {
+      // Reads from firebase
+      allDocos = await this.docoService.readFromDB();
+      this.documentariesList = this.docoService.getAllDocosForCategory(allDocos, this.currentCategory);
+    }
   }
 }

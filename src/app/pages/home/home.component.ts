@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TagService } from '../../services/tag.service';
 import { CategoryService } from '../../services/category.service';
+import { Offline } from '../../models/global';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   // Data taken directly from Dabatase
   categoryList: any;
   tagsList: any;
-  
+
   constructor(
     private tagService: TagService,
     private categoryService: CategoryService
@@ -22,12 +23,26 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCategoryList();
     this.getTagsList();
+
   }
 
+  // Get a list of all categories
   async getCategoryList() {
-    this.categoryList = await this.categoryService.readFromDB();
+    if (Offline) {
+      this.categoryList = await this.categoryService.readFromLocalStorage();
+    }
+    else {
+      this.categoryList = await this.categoryService.readFromDB();
+    }
   }
+
+  // Get a list of all tags
   async getTagsList() {
-    this.tagsList = await this.tagService.readFromDB();
+    if (Offline) {
+      this.tagsList = await this.tagService.readFromLocalStorage();
+    }
+    else {
+      this.tagsList = await this.tagService.readFromDB();
+    }
   }
 }

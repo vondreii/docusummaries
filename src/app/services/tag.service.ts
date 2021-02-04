@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Tag } from '../models/models';
+import { LocalCategories, LocalTags } from '../models/localStorage';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,25 @@ export class TagService {
     private db: AngularFirestore
   ) { }
 
+  // Return all Category objects from Local Storage
+  readFromLocalStorage() {
+    return LocalTags;
+  }
   // Return all Tag objects from Firebase
   readFromDB() {
     return new Promise<any>((resolve)=> {
       this.db.collection('tag').valueChanges({ idField: 'id' }).subscribe(tags => resolve(tags));
     })
+  }
+  // Returns a single tag entry, based on the id (offine)
+  getTagEntryOffline(id: string) {
+    let current: Tag = new Tag();
+    LocalTags.forEach(tag => {
+      if (id == tag.id) {
+        current = tag;
+      }
+    });
+    return current;
   }
   // Returns a single tag entry, based on the id
   getTagEntry(id: string) {

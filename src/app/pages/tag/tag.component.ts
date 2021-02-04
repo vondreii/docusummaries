@@ -4,6 +4,7 @@ import { TagService } from '../../services/tag.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { Category, Documentary, Tag } from 'src/app/models/models';
+import { Offline } from 'src/app/models/global';
 
 @Component({
   selector: 'app-tag',
@@ -33,7 +34,6 @@ export class TagComponent implements OnInit {
     // params is the :id (unique value) from the link (eg 'aircrash' from /categories/aircrash). 
     this.route.params.subscribe(params => {
       this.listDocos();
-      console.log(params);
     });
   }
 
@@ -54,31 +54,51 @@ export class TagComponent implements OnInit {
     // Get the current category/tag, a list of all documentaries
     // this.documentariesList = this.docoService.readFromDB();
     this.getCurrentTag().then(() => {
-      this.getAllDocos();
+      this.getCurrentCategory().then(() => {
+        this.getAllDocos();
+      })
     });
   }
 
   async getCurrentTag() {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-    this.tagService.getTagEntry("id-"+this.tagLinkRoute).then(tag => {
-      this.currentTag = tag;
-      this.currentTag.id = "id-"+this.tagLinkRoute;
-      this.getCurrentCategory();
-    });
+    if (Offline) {
+      this.currentTag = this.tagService.getTagEntryOffline("id-"+this.tagLinkRoute);
+    }
+    else {
+      this.tagService.getTagEntry("id-"+this.tagLinkRoute).then(tag => {
+        this.currentTag = tag;
+        this.currentTag.id = "id-"+this.tagLinkRoute;
+        this.getCurrentCategory();
+      });
+    }
   }
 
   async getCurrentCategory() {
-    // Find the current category of the page (eg, find if the user selected 'health'). 
-    this.categoryService.getCategoryEntry("id-"+this.categoryLinkRoute).then(category => {
-      this.currentCategory = category;
-      this.currentCategory.id = "id-"+this.tagLinkRoute;
-    });
+    // Find the current category of the page (eg, find if the user selected 'health').
+    if (Offline) {
+      this.currentCategory = this.categoryService.getCategoryEntryOffline("id-"+this.categoryLinkRoute);
+    }
+    else {
+      this.categoryService.getCategoryEntry("id-"+this.categoryLinkRoute).then(category => {
+        this.currentCategory = category;
+        this.currentCategory.id = "id-"+this.tagLinkRoute;
+      });
+    } 
   }
 
   async getAllDocos() {
-    // Gets a list of all Docos
-    let allDocos = await this.docoService.readFromDB();
-    // Returns a list of docos only for the specific tag
-    this.documentariesList = this.docoService.getAllDocosForTag(allDocos, this.currentTag.id);
+    // Gets a list of all docos for a specific category
+    let allDocos = [];
+    if (Offline) {
+      // Reads from local storage
+      allDocos = this.docoService.readFromLocalStorage();
+      this.documentariesList = this.docoService.getAllDocosForTagOffline(allDocos, this.currentTag.id);
+    }
+    else {
+      // Reads from firebase
+      allDocos = await this.docoService.readFromDB();
+      this.documentariesList = this.docoService.getAllDocosForTag(allDocos, this.currentTag.id);
+    }
   }
 }

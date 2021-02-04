@@ -4,6 +4,7 @@ import { DocumentaryService } from '../../services/documentary.service';
 import { Category, Documentary, Tag } from '../../models/models';
 import { TagService } from 'src/app/services/tag.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { Offline } from 'src/app/models/global';
 
 @Component({
   selector: 'app-documentary',
@@ -49,7 +50,13 @@ export class DocumentaryComponent implements OnInit {
 
   async getCurrentDoco() {
     // Find the rest of the info related to the current doco (eg, description), to display it.
-    this.documentariesList = await this.docoService.readFromDB();
+    if (Offline) {
+      this.documentariesList = this.docoService.readFromLocalStorage();
+    }
+    else {
+      this.documentariesList = await this.docoService.readFromDB();
+    }
+    // Finds the current doco
     this.documentariesList.forEach(doco => {
       if(doco.link.toString().includes(this.articleName)){
         this.currentDoco = doco;
@@ -58,8 +65,15 @@ export class DocumentaryComponent implements OnInit {
   }
 
   async getRelatedTags() {
+    // Reads the list of all tags 
+    let tagsList = [];
+    if (Offline) {
+      tagsList  = await this.tagService.readFromLocalStorage();
+    }
+    else {
+      tagsList = await this.tagService.readFromDB();
+    }
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
-    let tagsList = await this.tagService.readFromDB();
     tagsList.forEach(tag => {
       if(this.currentDoco.tags.includes(tag.id)){
         this.relatedTags.push(tag);
@@ -69,7 +83,11 @@ export class DocumentaryComponent implements OnInit {
 
   async getCurrentCategory() {
     // Finds the category that the doco is listed under.
-    this.currentCategory = await this.categoryService.getCategoryEntry(this.currentDoco.category);
-    // console.log(this.currentCategory.name);
+    if (Offline) {
+      this.currentCategory = await this.categoryService.getCategoryEntryOffline(this.currentDoco.category);
+    }
+    else {
+      this.currentCategory = await this.categoryService.getCategoryEntry(this.currentDoco.category);
+    }
   }
 }
