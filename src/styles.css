@@ -1,29 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
-.dark{
-  background-color: #0f0e17 
-}
-.light{
-  background-color: #d6dce4;
-}
-.tag {
-  margin-right: 10px;
-  font-size: 16px
-}
+/* Whole page */
 .pageContent {
   padding: 70px 300px; 
 }
-.pageHeading {
-  margin-top: 20px;
-  padding: 20px;
-  color: rgb(173, 173, 173);
-  background-color:rgb(236, 236, 236)
+@media screen and (max-width: 1200px) {
+  /* Medium Screens */
+  .pageContent {
+    padding: 70px 100px; 
+  }
 }
+@media screen and (max-width: 800px) {
+  /* Small screens */
+  .pageContent {
+    padding: 100px 20px; 
+  }
+}
+
+/* Overall, or common page content */
+h2 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+h4 {
+  color: rgb(126, 126, 126);
+}
+.margin-b-large {
+  margin-bottom: 40px;
+}
+
+/* The white box that displays for each documentary */
 .whiteBox {
   background-color:rgb(248, 248, 248);
   padding: 20px;
   margin-bottom: 50px;
   border-radius: 1px;
   border: 1px solid rgb(226, 226, 226);
+}
+
+/* Description at the top of a category or tag page  */
+.desc {
+  padding-top: 10px;
+}
+
+/* Tags */
+.tag {
+  margin-right: 10px;
+  font-size: 16px;
+}
+.tag:hover {
+  background-color: #ffb055;
+  transition: 0.3s
 }
 
 /* Breadcrumbs */
@@ -35,26 +60,27 @@
   color: #272727;
   text-decoration: none;
   transition: 0.3s;
-  border-bottom: 3px solid rgb(97, 134, 172);
+  border-bottom: 3px solid #ffb055;
   line-height: 1.6;
   padding-bottom: 5px
 }
 .breadcrumbs a:hover {
   color: #808080;
-  border-bottom: 3px solid rgb(123, 163, 202);
+  border-bottom: 3px solid #ffc079;
   text-decoration: none;
   transition: 0.3s;
 }
 
-
-/* Medium screens */
-@media screen and (max-width: 1200px) {
-  .pageContent {
-    padding: 70px 100px; 
-  }
+/* Read more button */
+/* .readMore {
+  background-color: #ffa846;
+  font-size: 16px;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #ffffff;
 }
-@media screen and (max-width: 800px) {
-  .pageContent {
-    padding: 100px 20px; 
-  }
-}
+.readMore:hover {
+  background-color: #ffc98b;
+  text-decoration: none;
+  color: #ffffff;
+}  */

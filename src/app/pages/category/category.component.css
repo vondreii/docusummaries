@@ -1,37 +1,24 @@
-.categoryHeading {
-  border-bottom: 5px solid rgb(97, 134, 172);
-  text-decoration: none;
-  color: #9c9c9c;
-  transition: 0.3s;
-  line-height: 1.6
-}
-.categoryHeading:hover {
-  border-bottom: 5px solid rgb(160, 188, 216);
-  text-decoration: none;
-  color: #cccccc;
-  transition: 0.3s
-}
-.desc {
-  padding-top: 10px;
-}
-.taglink {
-  padding-right: 20px;
-}
+/* Tag font override */
 .tag {
-  margin-right: 10px;
   font-size: 16px;
 }
-.tag:hover {
-  background-color: #ffb055;
-  transition: 0.3s
+
+/* Text decoration override */
+.majorHeading {
+  text-decoration: none;
 }
-.margin-b {
-  margin-bottom: 50px;
+.readMore {
+  text-decoration: none;
 }
-h2 {
-  padding-top: 20px;
-  padding-bottom: 10px;
+
+/* Read more overrides */
+.readMore {
+  background-color: #ffb764;
+  font-size: 16px;
+  padding: 15px 25px;
 }
-h4 {
-  color: rgb(126, 126, 126);
-}
+.readMore:hover {
+  background-color: #ffc98b;
+  text-decoration: none;
+  color: #ffffff;
+} 

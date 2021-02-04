@@ -51,6 +51,7 @@ export class DocumentaryService {
         if(tag.includes(currentTag)) {
           if (!docosForTag.some(e => e.link === doco.link)) {
             docosForTag.push(doco);
+            docosForTag[docosForTag.length-1].tagObj = this.getAllTagsForDoco(doco);
           }
         }
       });
