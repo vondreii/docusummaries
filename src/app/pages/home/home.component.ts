@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
   ) { 
     // params is the :id (unique value) from the link (eg 'aircrash' from /categories/aircrash). 
     this.route.params.subscribe(params => {
-      this.listItems();
+      // this.listItems();
+      // console.log("Restarting");
     });
   }
 
@@ -31,7 +32,12 @@ export class HomeComponent implements OnInit {
     this.listItems();
   }
 
-  listItems() {
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async listItems() {
+    await this.delay(300);
     this.getCategoryList().then(() => {
       this.getTagsList();
     });
