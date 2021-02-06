@@ -14,7 +14,7 @@
   position: absolute;
   padding: 10px 10px;
   width: 900px;
-  box-shadow: 5px 10px 28px #888888;
+  box-shadow: 5px 10px 28px #353446;
 }
 
 
@@ -34,23 +34,14 @@
   .searchLinks {
     width: 500px;
   }
-  /* .search {
-    padding: 30px 50px;
-  } */
 }
 @media screen and (max-width: 600px) {
   .searchLinks {
     width: 300px;
   }
-  /* .search {
-    padding: 30px 50px;
-  } */
 }
 @media screen and (max-width: 400px) {
   .searchLinks {
     width: 200px;
   }
-  /* .search {
-    padding: 30px 50px;
-  } */
 }

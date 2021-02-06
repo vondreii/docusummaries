@@ -58,13 +58,24 @@ export class SearchComponent implements OnInit {
   async addDocos() {
     this.documentariesList = await this.docoService.readFromDB();
     this.documentariesList.forEach(doco => {
-      this.searchString.push(
-        doco.name + " - " + 
-        doco.studio + " - " +
-        doco.tags + " - " +
-        doco.topic + " -@" +
-        doco.link
-      );
+      // Add docoName
+      let docoEntry = doco.name + " - ";
+      // Add studio to search entry if there is a value
+      if (doco.studio != "") {
+        docoEntry += doco.studio + " - ";
+      }
+      // WIP
+      // Add producer to search entry if there is a value
+      // if (doco.producer != "") {
+      //   docoEntry += doco.producer + " - ";
+      // }
+      // Compulsory - will always be listed with tags and a link
+      // doco.tags.forEach(tag => {
+      //   tag.name
+      // });
+      docoEntry += doco.tags + " -@ " + doco.link;
+
+      this.searchString.push(docoEntry);
     });
   }
 }

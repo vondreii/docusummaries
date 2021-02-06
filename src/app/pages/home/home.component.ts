@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TagService } from '../../services/tag.service';
-import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { Offline } from '../../models/global';
 
@@ -17,15 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private tagService: TagService,
-    private categoryService: CategoryService,
-    private route: ActivatedRoute,
-  ) { 
-    // params is the :id (unique value) from the link (eg 'aircrash' from /categories/aircrash). 
-    this.route.params.subscribe(params => {
-      // this.listItems();
-      // console.log("Restarting");
-    });
-  }
+    private categoryService: CategoryService
+  ) { }
 
   // Read and Store Categories and Tags
   ngOnInit(): void {
