@@ -14,7 +14,7 @@ import { Offline } from 'src/app/models/global';
 export class TagComponent implements OnInit {
 
   // The current category we are viewing
-  currentCategory: Category = {name: "", link: "", id: ""};
+  currentCategory: Category = {name: "", description: "", link: "", id: ""};
   currentTag: Tag = {name: "", link: "", id: "", category: ""};
 
   // For the url at the top
@@ -22,7 +22,6 @@ export class TagComponent implements OnInit {
   categoryLinkRoute: string;
 
   // Tag and documentary data from DB
-  tagsList: any;
   documentariesList: Array<Documentary> = [];
   
   constructor(
@@ -44,7 +43,7 @@ export class TagComponent implements OnInit {
 
   listDocos() {
     // Resets page on reload
-    this.currentCategory = {name: "", link: "", id: ""};
+    this.currentCategory = {name: "", description: "", link: "", id: ""};
 
     // Get the url from the window
     let url = window.location.href;
@@ -52,7 +51,6 @@ export class TagComponent implements OnInit {
     this.categoryLinkRoute = this.categoryService.getUrlDirectory(url, true);
 
     // Get the current category/tag, a list of all documentaries
-    // this.documentariesList = this.docoService.readFromDB();
     this.getCurrentTag().then(() => {
       this.getCurrentCategory().then(() => {
         this.getAllDocos();

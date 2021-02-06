@@ -14,6 +14,7 @@ export class Documentary {
 
 export class Category {
   id: string = "";
+  description: string = "";
   name: string = "";
   link: string = "";
 }

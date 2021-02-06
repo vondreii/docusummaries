@@ -3,9 +3,9 @@ import { Category, Documentary, Tag } from "./models";
 // Local storage for offline development and debugging only
 // Change Offline in src/app/models/global.ts to 'true'
 export const LocalCategories: Category[] =  [ 
-  {id: "id-disasters", name: "Disasters", link: "disasters" },
-  {id: "id-lifestyle", name: "Lifestyle", link: "lifestyle" },
-  {id: "id-health", name: "Health", link: "health" } 
+  {id: "id-disasters", description: "a", name: "Disasters", link: "disasters" },
+  {id: "id-lifestyle", description: "b", name: "Lifestyle", link: "lifestyle" },
+  {id: "id-health", description: "c", name: "Health", link: "health" } 
 ];
 export const LocalTags: Tag[] =  [ 
   {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash" },
@@ -23,7 +23,7 @@ export const LocalDocos: Documentary[] = [
     producer: "Who knows",
     studio: "Who cares",
     category: "id-disasters", 
-    categoryObj: {id: "id-disasters", name: "Disasters", link: "disasters" }, 
+    categoryObj: {id: "id-disasters", description: "a", name: "Disasters", link: "disasters" }, 
     tags: ["id-aircrash", "id-explosionsOrFire"],
     tagObj: [
       {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash" },
@@ -40,7 +40,7 @@ export const LocalDocos: Documentary[] = [
     producer: "Who knows",
     studio: "Who cares",
     category: "id-lifestyle", 
-    categoryObj: {id: "id-lifestyle", name: "Lifestyle", link: "lifestyle" },
+    categoryObj: {id: "id-lifestyle", description: "b", name: "Lifestyle", link: "lifestyle" },
     tags: ["id-household"],
     tagObj: [
       {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household" }
@@ -56,7 +56,7 @@ export const LocalDocos: Documentary[] = [
     producer: "Who knows",
     studio: "Who cares",
     category: "id-health", 
-    categoryObj: {id: "id-health", name: "Health", link: "health" },
+    categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }
@@ -71,7 +71,7 @@ export const LocalDocos: Documentary[] = [
     producer: "Who knows",
     studio: "Who cares",
     category: "id-health", 
-    categoryObj: {id: "id-health", name: "Health", link: "health" },
+    categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }
@@ -86,7 +86,7 @@ export const LocalDocos: Documentary[] = [
     producer: "Who knows",
     studio: "Who cares",
     category: "id-health", 
-    categoryObj: {id: "id-health", name: "Health", link: "health" },
+    categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }

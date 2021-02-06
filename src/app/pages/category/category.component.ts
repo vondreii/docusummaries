@@ -14,7 +14,7 @@ import { Offline } from '../../models/global';
 export class CategoryComponent implements OnInit {
 
   // The current category we are viewing
-  currentCategory: Category = {name: "", link: "", id: ""};
+  currentCategory: Category = {name: "", description: "", link: "", id: ""};
 
   // For the url at the top
   categorylinkRoute: string;
@@ -42,7 +42,7 @@ export class CategoryComponent implements OnInit {
 
   listDocos() {
     // Resets page on reload
-    this.currentCategory = {name: "", link: "", id: ""};
+    this.currentCategory = {name: "", description: "", link: "", id: ""};
 
     // Get the url from the window
     let url = window.location.href;

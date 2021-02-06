@@ -14,7 +14,7 @@ import { Offline } from 'src/app/models/global';
 export class DocumentaryComponent implements OnInit {
 
   // The current category/tag the doco is in
-  currentCategory: Category = {name: "", link: "", id: ""};
+  currentCategory: Category = {name: "", description: "", link: "", id: ""};
 
   // declare doco variables
   post: string;

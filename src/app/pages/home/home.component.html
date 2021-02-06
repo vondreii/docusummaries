@@ -20,7 +20,7 @@
       <!-- Category Heading -->
       <h3><a class="majorHeading" routerLink="{{category.link}}">{{category.name}}</a></h3>
       <!-- Category Description -->
-      <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="desc">{{category.description}}</p>
       <!-- Display all related tags underneath the category -->
       <div *ngFor="let tag of tagsList"  role="listitem" class="d-inline">
         <a *ngIf="tag.category===category.id" routerLink="{{tag.link}}" >
