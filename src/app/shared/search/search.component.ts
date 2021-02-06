@@ -73,7 +73,7 @@ export class SearchComponent implements OnInit {
       // doco.tags.forEach(tag => {
       //   tag.name
       // });
-      docoEntry += doco.tags + " -@ " + doco.link;
+      docoEntry += doco.tags + " -@/" + doco.link;
 
       this.searchString.push(docoEntry);
     });
