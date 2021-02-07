@@ -3,9 +3,9 @@ import { Category, Documentary, Tag } from "./models";
 // Local storage for offline development and debugging only
 // Change Offline in src/app/models/global.ts to 'true'
 export const LocalCategories: Category[] =  [ 
-  {id: "id-disasters", description: "a", name: "Disasters", link: "disasters" },
-  {id: "id-lifestyle", description: "b", name: "Lifestyle", link: "lifestyle" },
-  {id: "id-health", description: "c", name: "Health", link: "health" } 
+  {id: "id-disasters", description: "Documentaries involving major disruptions to society, including natural disasters, man-made disasters, and events resulting in multiple fatalities or injuries.", name: "Disasters", link: "disasters" },
+  {id: "id-lifestyle", description: "Lifestyle documentaries about ways of living, including alternative ways of living and how people used to live in the past.", name: "Lifestyle", link: "lifestyle" },
+  {id: "id-health", description: "Documentaries related to overall health, fitness, and physical illnesses and diseases.", name: "Health", link: "health" } 
 ];
 export const LocalTags: Tag[] =  [ 
   {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash" },

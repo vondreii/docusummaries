@@ -24,15 +24,16 @@ export class HomeComponent implements OnInit {
     this.listItems();
   }
 
-  async delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
-
   async listItems() {
     await this.delay(300);
     this.getCategoryList().then(() => {
       this.getTagsList();
     });
+  }
+
+  // Delays x milliseconds before executing next statements
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   // Get a list of all categories

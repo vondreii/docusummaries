@@ -1,9 +1,16 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
 <!-- Jumbotron at the top with the searchbar -->
 <div class="jumbotron">
   <div class="jumbo">
     <h1>Doco Summaries</h1>
-    <p>Search blah blah Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor!</p>
+    <p>
+      A place where you can learn based on summaries from hundreds of documentaries.
+      Search quick summaries or videos of documentaries of different categories!
+    </p>
+    <!-- Search bar -->
     <app-search></app-search>
+    <!-- List of tags under search bar -->
     <div class="tagslist">
       <span *ngFor="let tag of tagsList | slice: 0:8; let i=index" role="listitem" class="d-inline" >
         <a routerLink="{{'/'+tag.link}}" >

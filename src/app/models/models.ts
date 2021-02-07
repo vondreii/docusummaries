@@ -25,3 +25,15 @@ export class Tag {
   name: string = "";
   id: string= "";
 }
+
+export class DocumentaryLocal {
+  name: string = "Loading...";
+  description: string = "Fetching...";
+  linkToDoco: string = "";
+  link: string = "";
+  producer: string = "Fetching...";
+  studio: string = "Fetching...";
+  category: string = "Fetching...";
+  tags: Array<string> = ["Fetching..."];
+  topic: string = "Fetching...";
+}

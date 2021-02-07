@@ -12,4 +12,13 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Submit button for when the user wants to give us feedback
+  submitFeedback() {
+    console.log("Submit Feedback");
+  }
+
+  // Submit button for when the user wants to contribute some info
+  submitContribution() {
+    console.log("Submit Contribution");
+  }
 }
