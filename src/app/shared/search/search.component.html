@@ -9,7 +9,7 @@
     <!-- End input -->
     <!-- List of results -->
     <div class="list-group list-group-flush searchLinks" [hidden]="searchText==''">
-      <div class="list-group-item" *ngFor="let c of searchString | appFilter: searchText | slice: 0:5; let i=index" appHighlight
+      <div class="list-group-item" routerLink="{{c.substring(c.indexOf('@')+1,c.length)}}" *ngFor="let c of searchString | appFilter: searchText | slice: 0:5; let i=index" appHighlight
         [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'" [hidden]="searchText==''">
           <a (click)="onSelect()" routerLink="{{c.substring(c.indexOf('@')+1,c.length)}}" class="link">{{c.substring(0,c.indexOf(' -@'))}}</a>
       </div>

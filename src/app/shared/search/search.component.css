@@ -1,4 +1,3 @@
-/* Border around each search item */
 .list-group-item {
   padding: 5px
 }
@@ -8,15 +7,28 @@
   position: relative;
   z-index: 1;
 }
+/* parent searchLinks div */
 .searchLinks {
   border-radius: 10px;
   background-color: white;
   position: absolute;
-  padding: 10px 10px;
   width: 900px;
   box-shadow: 5px 10px 28px #353446;
 }
-
+/* The div that is around the links that turns grey on hover */
+.searchLinks div {
+  padding: 10px 10px;
+}
+.searchLinks div:hover {
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+/* Individual links */
+.searchLinks a {
+  color: #676572;
+  text-decoration: none;
+  transition: ease-in;
+}
 
 /* Medium screens */
 @media screen and (max-width: 1200px) {
