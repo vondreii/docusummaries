@@ -1,5 +1,4 @@
 import { Directive, Input, SimpleChanges, Renderer2, ElementRef, OnChanges } from '@angular/core';
-
 // Resources from https://dev.to/idrisrampurawala/creating-a-search-filter-in-angular-562d
 @Directive({
   selector: '[appHighlight]'
@@ -16,6 +15,8 @@ export class HighlightDirective implements OnChanges {
     if (!this.content) {
       return;
     }
+
+
 
     if (this.setTitle) {
       this.renderer.setProperty(

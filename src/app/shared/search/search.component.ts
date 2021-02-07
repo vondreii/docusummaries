@@ -9,7 +9,6 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  
   // Declare search string elements
   searchText = '';
   documentariesList: any;
@@ -34,7 +33,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSelect() {
-    console.log("Something selected");
+    // console.log("Something selected");
     this.searchText = '';
   }
 
@@ -57,25 +56,26 @@ export class SearchComponent implements OnInit {
   // Pull docos list from Firebase and add to the search string
   async addDocos() {
     this.documentariesList = await this.docoService.readFromDB();
-    this.documentariesList.forEach(doco => {
-      // Add docoName
-      let docoEntry = doco.name + " - ";
+    // For each doco, add to the search bar
+    for (let i = 0; i < this.documentariesList.length; i++) {
+      let doco =  this.documentariesList[i];
+      // Add the name of the doco to the search string
+      let docoEntry = doco.name;
+      // Add category of the doco
+      docoEntry += " | " + await (await this.categoryService.getCategoryEntry(doco.category)).name;
+      // Add tags of the doco
+      for (let j = 0; j < this.documentariesList[i].tags.length; j++) {
+        let tagId = this.documentariesList[i].tags[j];
+        docoEntry += " | " + await (await this.tagService.getTagEntry(tagId)).name;
+      };
       // Add studio to search entry if there is a value
       if (doco.studio != "") {
-        docoEntry += doco.studio + " - ";
+        docoEntry += " | " + doco.studio;
       }
-      // WIP
-      // Add producer to search entry if there is a value
-      // if (doco.producer != "") {
-      //   docoEntry += doco.producer + " - ";
-      // }
-      // Compulsory - will always be listed with tags and a link
-      // doco.tags.forEach(tag => {
-      //   tag.name
-      // });
-      docoEntry += doco.tags + " -@/" + doco.link;
-
+      // Add the link for when you click on it
+      docoEntry += " -@/" + doco.link;
+      // Push all docos to the final search string list
       this.searchString.push(docoEntry);
-    });
+    }
   }
 }
