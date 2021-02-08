@@ -1,11 +1,11 @@
 /* Whole page */
 .pageContent {
-  padding: 70px 300px; 
+  padding: 100px 300px; 
 }
 @media screen and (max-width: 1200px) {
   /* Medium Screens */
   .pageContent {
-    padding: 70px 100px; 
+    padding: 100px 100px; 
   }
 }
 @media screen and (max-width: 800px) {

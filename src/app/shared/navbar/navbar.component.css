@@ -1,12 +1,33 @@
+/* For navbar content/padding styling */
 .box {
-  /* box-shadow: 1px 2px rgb(230, 230, 230); */
-  padding: 10px 200px;
+  padding: 0px 100px;
   border-bottom: 1px solid rgb(211, 211, 211)
 }
-
+@media screen and (max-width: 1500px) {
+  .box {
+    /* box-shadow: none; */
+    padding: 0px 20px;
+  }
+}
 @media screen and (max-width: 1000px) {
   .box {
     /* box-shadow: none; */
     padding: 15px 20px;
+  }
+}
+
+/* for styling of the overall navbar search bar component */
+.navbar-search {
+  padding-top: 20px;
+  width: 600px;
+}
+@media screen and (max-width: 1500px) {
+  .navbar-search {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .navbar-search {
+    width: 300px;
   }
 }

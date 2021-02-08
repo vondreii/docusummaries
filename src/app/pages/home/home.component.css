@@ -39,5 +39,23 @@
   font-size: 16px;
 }
 
+/* Override whole page styling */
+/* Whole page */
+.pageContent {
+  padding: 20px 300px; 
+}
+@media screen and (max-width: 1200px) {
+  /* Medium Screens */
+  .pageContent {
+    padding: 20px 100px; 
+  }
+}
+@media screen and (max-width: 800px) {
+  /* Small screens */
+  .pageContent {
+    padding: 20px 20px; 
+  }
+}
+
 
 
