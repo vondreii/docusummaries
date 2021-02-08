@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TagService } from '../../services/tag.service';
 import { DocumentaryService } from '../../services/documentary.service';
 import { CategoryService } from '../../services/category.service';
@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
   tagsList: any;
   categoriesList: any; 
   searchString: Array<string> = new Array<string>();
+
+  @Input() searchIsInNavbar: boolean = false;
 
   darkMode: boolean;
 

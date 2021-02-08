@@ -2,10 +2,14 @@
 <div class="search">
   <div class="content" role="main">
     <!-- Input for searchbox -->
-    <div class="form-group">
-      <input type="email" class="form-control searchbox" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+    <div class="form-group" *ngIf="searchIsInNavbar; else searchNotInNavbar">
+      <input type="email" class="form-control round-searchbox" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
         placeholder="What are you looking for?" autofocus>
     </div>
+    <ng-template #searchNotInNavbar>
+      <input type="email" class="form-control square-searchbox" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+        placeholder="What are you looking for?" autofocus>
+    </ng-template>
     <!-- End input -->
     <!-- List of results -->
     <div class="list-group list-group-flush searchLinks" [hidden]="searchText==''">

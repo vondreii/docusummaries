@@ -7,6 +7,12 @@
   position: relative;
   z-index: 1;
 }
+.round-searchbox {
+  border-radius: 25px;
+}
+.square-searchbox {
+  border-radius: 5px;
+}
 /* parent searchLinks div */
 .searchLinks {
   border-radius: 10px;
