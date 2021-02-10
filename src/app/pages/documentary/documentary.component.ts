@@ -31,20 +31,26 @@ export class DocumentaryComponent implements OnInit {
   ) { 
     // params is the :id (unique value) from the link (eg 'Comet781' from /../article/Comet781). 
     this.route.params.subscribe(params => {
-      this.articleName = params.article;
-      this.getCurrentDoco().then(() => {
-        this.getCurrentCategory();
-      });
+      this.getDoco();
     });
   }
 
   // Get the article's name using the route and find the associated md file in src/assets.
   ngOnInit(): void {
+    // this.getDoco();
+  }
+
+  getDoco() {
+    // Reset array values
+    this.relatedTags = [];
+    // Using the url link, find the article to display
     this.articleName = this.route.snapshot.paramMap.get('article');
     this.post = './assets/articles/' +  this.articleName + '.md';
+    // Get the details of the doco including it's category and tags
     this.getCurrentDoco().then(() => {
-      this.getCurrentCategory();
-      this.getRelatedTags();
+      this.getCurrentCategory().then(() => {
+        this.getRelatedTags();
+      });
     });
   }
 
@@ -76,7 +82,9 @@ export class DocumentaryComponent implements OnInit {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
     tagsList.forEach(tag => {
       if(this.currentDoco.tags.includes(tag.id)){
-        this.relatedTags.push(tag);
+        if (!this.relatedTags.some(e => e.link === tag.id)) {
+          this.relatedTags.push(tag);
+        }
       }
     });
   }
