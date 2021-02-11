@@ -2,7 +2,7 @@
 
 Past Facebook/Youtube/Twitter employees are interviewed and they explain the powers and dangers of Social Media. They explain how users are manipulated and purposely tricked into staying on the screen for the longest possible time by using AI and selling our 'attention' to advertisers. As mentioned repeatedly, "we are the product being sold." The documentary has a strong focus on the exploitation and manipulation of users for financial gain through surveillance capitalism and data mining.
 
-[The Social Dilemma](https://en.wikipedia.org/wiki/The_Social_Dilemma)
+[Link to Wikipedia Article](https://en.wikipedia.org/wiki/The_Social_Dilemma)
 
 The documentary explores the societal and emotional impacts that the rise in technology has on society. This includes the serious mental health issues that social media networks like Facebook contribute to, especially in young and impressionable teenagers and young adults. The psychological effects that sites like Facebook have on the brain are very dangerous to young people. It has the potential to enforces insecurity by causing people to compare themselves with others. 
 

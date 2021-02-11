@@ -26,4 +26,4 @@ The 10 animals are:
 
 - **2: The largest sea animal.** The Blue Whale eats giant packs of krill (with thousands of krill) at the same time. They also manouver in a way where they don't have to exert as many calories while they hunt for their food.
 
-- **1: Largest Animal.** The Titanosaur ****stood over 3 storeys tall, weighed as much as 11 T-rexes, and was the length of the space shuttle orbiter. One foot was big enough to crush 20 people.
+- **1: Largest Animal.** The Titanosaur stood over 3 storeys tall, weighed as much as 11 T-rexes, and was the length of the space shuttle orbiter. One foot was big enough to crush 20 people.
