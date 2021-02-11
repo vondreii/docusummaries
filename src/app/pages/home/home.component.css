@@ -12,7 +12,8 @@
   background-color: #ffc079;
 }
 .jumbo {
-  padding: 150px 300px; 
+  /* padding: 150px 300px; */
+  padding: 150px 300px 50px 300px;
 }
 @media screen and (max-width: 1200px) {
   /* Medium and small screens */
@@ -57,5 +58,18 @@
   }
 }
 
+/* More info p tag redirecting customers to contact */
+.moreInfo {
+  color:rgb(168, 168, 168); 
+  font-size: smaller;
+}
+.moreInfo a {
+  text-decoration: none;
+  color: #ffd6a7;
+}
+.moreInfo a:hover {
+  text-decoration: none;
+  color: #ffb055;
+}
 
 
