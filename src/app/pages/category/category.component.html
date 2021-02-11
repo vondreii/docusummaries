@@ -18,9 +18,8 @@
     </div>
   </div>
   <!-- Show documentaries under that category -->
-  <div *ngFor="let doco of documentariesList"  role="listitem">
+  <!-- <div *ngFor="let doco of documentariesList"  role="listitem">
     <div class="whiteBox"> 
-      <!-- Display their details -->
       <h4><strong> {{doco.name}} </strong></h4>
       <p>{{doco.description}}</p>
       <p>{{doco.studio}}</p>
@@ -29,13 +28,11 @@
           <span class="badge badge-secondary mb-3 mt-3 tag">{{'#'+tag.name}}</span>
         </a>
       </div>
-      <!-- Read more link -->
       <div>
         <a routerLink="{{doco.link}}" >
           <span class="badge badge-secondary mb-3 mt-3 readMore">READ MORE >></span>
         </a>
       </div>
-      <!-- End of details -->
     </div>
-  </div>
+  </div> -->
 </div>

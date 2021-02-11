@@ -1,6 +1,7 @@
 /* Whole page */
 .pageContent {
   padding: 100px 300px; 
+  background-color:#0f0e17
 }
 @media screen and (max-width: 1200px) {
   /* Medium Screens */
@@ -19,6 +20,10 @@
 h2 {
   padding-top: 20px;
   padding-bottom: 10px;
+  /* Light Mode */
+  /* color:rgb(248, 248, 248);  */
+  /* Dark Mode */
+  color:rgb(226, 226, 226); 
 }
 h4 {
   color: rgb(126, 126, 126);
@@ -29,7 +34,10 @@ h4 {
 
 /* The white box that displays for each documentary */
 .whiteBox {
-  background-color:rgb(248, 248, 248);
+  /* Light Mode */
+  /* background-color:rgb(248, 248, 248);  */
+  /* Dark Mode */
+  background-color:rgb(235, 235, 235); 
   padding: 20px;
   margin-bottom: 50px;
   border-radius: 10px;
@@ -39,6 +47,12 @@ h4 {
 /* Description at the top of a category or tag page  */
 .desc {
   padding-top: 10px;
+  color: rgb(216, 216, 216); 
+}
+
+.whiteBox .desc {
+  padding-top: 10px;
+  color: #0f0e17
 }
 
 /* Tags */
@@ -53,11 +67,17 @@ h4 {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  color: #272727;
+  /* Light Mode */
+  /* color: #272727; */
+  /* Darl Mode */
+  color:rgb(216, 216, 216); 
   line-height: 2;
 }
 .breadcrumbs a {
-  color: #272727;
+  /* Light Mode */
+  /* color: #272727; */
+  /* Darl Mode */
+  color:rgb(216, 216, 216); 
   text-decoration: none;
   transition: 0.3s;
   border-bottom: 3px solid #ffb055;
