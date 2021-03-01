@@ -76,7 +76,6 @@ export class SearchComponent implements OnInit {
       }
       // Add keywords of the doco
       docoEntry += " END_DISPLAY_STRING";
-      console.log(this.documentariesList[i].keywords[0]);
       for (let j = 0; j < this.documentariesList[i].keywords.length; j++) {
         let keyword = this.documentariesList[i].keywords[j];
         docoEntry += " | " + keyword;
