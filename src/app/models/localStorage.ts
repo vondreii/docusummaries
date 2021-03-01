@@ -8,10 +8,10 @@ export const LocalCategories: Category[] =  [
   {id: "id-health", description: "Documentaries related to overall health, fitness, and physical illnesses and diseases.", name: "Health", link: "health" } 
 ];
 export const LocalTags: Tag[] =  [ 
-  {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash" },
-  {id: "id-explosionsOrFire", name: "Explosions Or Fire", category: "id-disasters", link: "disasters/explosionsOrFire" },
-  {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household" },
-  {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" },
+  {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash", docos: [] },
+  {id: "id-explosionsOrFire", name: "Explosions Or Fire", category: "id-disasters", link: "disasters/explosionsOrFire", docos: [] },
+  {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household", docos: [] },
+  {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] },
 ];
 export const LocalDocos: Documentary[] = [
   // Disasters => Aircrash & Explosions Or Fire 
@@ -26,8 +26,8 @@ export const LocalDocos: Documentary[] = [
     categoryObj: {id: "id-disasters", description: "a", name: "Disasters", link: "disasters" }, 
     tags: ["id-aircrash", "id-explosionsOrFire"],
     tagObj: [
-      {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash" },
-      {id: "id-explosionsOrFire", name: "Explosions Or Fire", category: "id-disasters", link: "disasters/explosionsOrFire" }
+      {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash", docos: [] },
+      {id: "id-explosionsOrFire", name: "Explosions Or Fire", category: "id-disasters", link: "disasters/explosionsOrFire", docos: [] }
     ],
     topic: ""
   },
@@ -43,7 +43,7 @@ export const LocalDocos: Documentary[] = [
     categoryObj: {id: "id-lifestyle", description: "b", name: "Lifestyle", link: "lifestyle" },
     tags: ["id-household"],
     tagObj: [
-      {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household" }
+      {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household", docos: [] }
     ],
     topic: ""
   },
@@ -59,7 +59,7 @@ export const LocalDocos: Documentary[] = [
     categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
-      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }
+      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
     topic: ""
   },
@@ -74,7 +74,7 @@ export const LocalDocos: Documentary[] = [
     categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
-      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }
+      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
     topic: ""
   },
@@ -89,7 +89,7 @@ export const LocalDocos: Documentary[] = [
     categoryObj: {id: "id-health", description: "c", name: "Health", link: "health" },
     tags: ["id-dietAndExercise"],
     tagObj: [
-      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise" }
+      {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
     topic: ""
   }

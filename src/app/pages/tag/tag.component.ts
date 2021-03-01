@@ -15,7 +15,7 @@ export class TagComponent implements OnInit {
 
   // The current category we are viewing
   currentCategory: Category = {name: "", description: "", link: "", id: ""};
-  currentTag: Tag = {name: "", link: "", id: "", category: ""};
+  currentTag: Tag = {name: "", link: "", id: "", category: "", docos: []};
 
   // For the url at the top
   tagLinkRoute: string;
@@ -23,7 +23,9 @@ export class TagComponent implements OnInit {
 
   // Tag and documentary data from DB
   documentariesList: Array<Documentary> = [];
-  
+  docoIds: Array<string> = [];
+
+
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
@@ -44,6 +46,8 @@ export class TagComponent implements OnInit {
   listDocos() {
     // Resets page on reload
     this.currentCategory = {name: "", description: "", link: "", id: ""};
+    this.docoIds = [];
+    this.documentariesList = []; // Test resetting the list of docos displayed
 
     // Get the url from the window
     let url = window.location.href;
@@ -51,14 +55,12 @@ export class TagComponent implements OnInit {
     this.categoryLinkRoute = this.categoryService.getUrlDirectory(url, true);
 
     // Get the current category/tag, a list of all documentaries
-    this.getCurrentTag().then(() => {
-      this.getCurrentCategory().then(() => {
-        this.getAllDocos();
-      })
+    this.getCurrentTagAndDocos().then(() => {
+      this.getCurrentCategory();
     });
   }
 
-  async getCurrentTag() {
+  async getCurrentTagAndDocos() {
     // Find the current tag of the page (eg, find if the user selected 'aircrash'). 
     if (Offline) {
       this.currentTag = this.tagService.getTagEntryOffline("id-"+this.tagLinkRoute);
@@ -67,8 +69,24 @@ export class TagComponent implements OnInit {
       this.tagService.getTagEntry("id-"+this.tagLinkRoute).then(tag => {
         this.currentTag = tag;
         this.currentTag.id = "id-"+this.tagLinkRoute;
+        this.docoIds = this.currentTag.docos;
         this.getCurrentCategory();
+        this.getAllDocos();
       });
+    }
+  }
+
+  async getAllDocos() {
+    // Gets a list of all docos for a specific tag
+    let allDocos = [];
+    if (Offline) {
+      // Reads from local storage
+      allDocos = this.docoService.readFromLocalStorage();
+      this.documentariesList = this.docoService.getAllDocosForTagOffline(allDocos, this.currentTag.id);
+    }
+    else {
+      // Reads from firebase
+      this.documentariesList = this.docoService.getAllDocosForTag(this.docoIds);
     }
   }
 
@@ -83,20 +101,5 @@ export class TagComponent implements OnInit {
         this.currentCategory.id = "id-"+this.tagLinkRoute;
       });
     } 
-  }
-
-  async getAllDocos() {
-    // Gets a list of all docos for a specific category
-    let allDocos = [];
-    if (Offline) {
-      // Reads from local storage
-      allDocos = this.docoService.readFromLocalStorage();
-      this.documentariesList = this.docoService.getAllDocosForTagOffline(allDocos, this.currentTag.id);
-    }
-    else {
-      // Reads from firebase
-      allDocos = await this.docoService.readFromDB();
-      this.documentariesList = this.docoService.getAllDocosForTag(allDocos, this.currentTag.id);
-    }
   }
 }

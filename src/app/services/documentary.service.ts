@@ -24,6 +24,12 @@ export class DocumentaryService {
       this.db.collection('documentary').valueChanges({ idField: 'id' }).subscribe(docos => resolve(docos));
     })
   }
+  // Returns a single doco entry, based on the id
+  getDocoEntry(id: string) {
+    return new Promise<Documentary>((resolve)=> {
+      this.db.collection('documentary').doc(id).valueChanges().subscribe((doco: Documentary) => resolve(doco));
+    })
+  }
   // Gets all Docos for a Category (Offline)
   getAllDocosForCategoryOffline(allDocos: any, currentCategory: Category) {
     let docosForCategory = Array<Documentary>();
@@ -75,18 +81,16 @@ export class DocumentaryService {
     return docosForTag;
   }
   // Gets all Docos for a tag
-  getAllDocosForTag(allDocos: any, currentTag) {
+  getAllDocosForTag(docoIds: Array<string>) {
     let docosForTag = [];
-    allDocos.forEach(doco => {
-      doco.tags.forEach(tag => {
-        if(tag.includes(currentTag)) {
-          if (!docosForTag.some(e => e.link === doco.link)) {
-            docosForTag.push(doco);
-            docosForTag[docosForTag.length-1].tagObj = this.getAllTagsForDoco(doco);
-          }
+    for (let i = 0; i < docoIds.length; i++) {
+      this.getDocoEntry(docoIds[i]).then(doco => {
+        if (!docosForTag.some(e => e.link === doco.link)) {
+          docosForTag.push(doco);
+          docosForTag[docosForTag.length-1].tagObj = this.getAllTagsForDoco(doco);
         }
-      });
-    });
+      })
+    }
     return docosForTag;
   }
   // Adds a new doco entry to Firebase

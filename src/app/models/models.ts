@@ -24,6 +24,7 @@ export class Tag {
   link: string = "";
   name: string = "";
   id: string= "";
+  docos: Array<string> = [];
 }
 
 export class DocumentaryLocal {
