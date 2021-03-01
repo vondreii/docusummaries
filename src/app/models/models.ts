@@ -9,7 +9,7 @@ export class Documentary {
   categoryObj: Category = new Category();
   tags: Array<string> = ["Fetching..."];
   tagObj: Array<Tag> = new Array<Tag>();
-  topic: string = "Fetching...";
+  keywords: Array<string> = ["Fetching..."];
 }
 
 export class Category {
@@ -36,5 +36,4 @@ export class DocumentaryLocal {
   studio: string = "Fetching...";
   category: string = "Fetching...";
   tags: Array<string> = ["Fetching..."];
-  topic: string = "Fetching...";
 }

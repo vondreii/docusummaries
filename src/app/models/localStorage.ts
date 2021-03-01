@@ -29,7 +29,7 @@ export const LocalDocos: Documentary[] = [
       {id: "id-aircrash", name: "Aircrash", category: "id-disasters", link: "disasters/aircrash", docos: [] },
       {id: "id-explosionsOrFire", name: "Explosions Or Fire", category: "id-disasters", link: "disasters/explosionsOrFire", docos: [] }
     ],
-    topic: ""
+    keywords: ["", ""]
   },
   // Lifestyle => Household
   {
@@ -45,7 +45,7 @@ export const LocalDocos: Documentary[] = [
     tagObj: [
       {id: "id-household", name: "Household", category: "id-lifestyle", link: "lifestyle/household", docos: [] }
     ],
-    topic: ""
+    keywords: ["", ""]
   },
   // Health => Diet # Exercise
   {
@@ -61,7 +61,7 @@ export const LocalDocos: Documentary[] = [
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
-    topic: ""
+    keywords: ["", ""]
   },
   {
     name: "1000 lb Sisters",
@@ -76,7 +76,7 @@ export const LocalDocos: Documentary[] = [
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
-    topic: ""
+    keywords: ["", ""]
   },
   {
     name: "Obesity In Texas",
@@ -91,6 +91,6 @@ export const LocalDocos: Documentary[] = [
     tagObj: [
       {id: "id-dietAndExercise", name: "Diet And Exercise", category: "id-health", link: "health/dietAndExercise", docos: [] }
     ],
-    topic: ""
+    keywords: ["", ""]
   }
 ]

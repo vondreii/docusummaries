@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
   async addCatagories() {
     this.categoriesList = await this.categoryService.readFromDB();
     this.categoriesList.forEach(category => {
-      this.searchString.push(category.name + " (Category) -@" + category.link);
+      this.searchString.push(category.name + " (Category) END_DISPLAY_STRING -@" + category.link);
     });
   }
 
@@ -51,7 +51,7 @@ export class SearchComponent implements OnInit {
   async addTags() {
     this.tagsList = await this.tagService.readFromDB();
     this.tagsList.forEach(tag => {
-      this.searchString.push("#" + tag.name + " -@" + tag.link);
+      this.searchString.push("#" + tag.name + " END_DISPLAY_STRING -@" + tag.link);
     });
   }
 
@@ -74,6 +74,14 @@ export class SearchComponent implements OnInit {
       if (doco.studio != "") {
         docoEntry += " | " + doco.studio;
       }
+      // Add keywords of the doco
+      docoEntry += " END_DISPLAY_STRING";
+      console.log(this.documentariesList[i].keywords[0]);
+      for (let j = 0; j < this.documentariesList[i].keywords.length; j++) {
+        let keyword = this.documentariesList[i].keywords[j];
+        docoEntry += " | " + keyword;
+      };
+      docoEntry += " | " + doco.description;
       // Add the link for when you click on it
       docoEntry += " -@/" + doco.link;
       // Push all docos to the final search string list
