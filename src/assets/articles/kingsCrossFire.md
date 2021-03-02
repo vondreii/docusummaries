@@ -1,6 +1,5 @@
 ### Summary
 
-kingsCrossFire.md
 A fire started in Kings Cross Station in London's underground tubes. 31 people died and 100 people were injured.
 
 [Link to Wikipedia Article](https://en.wikipedia.org/wiki/King%27s_Cross_fire)
