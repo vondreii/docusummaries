@@ -14,12 +14,24 @@
 }
 .jumbo {
   /* padding: 150px 300px; */
-  padding: 150px 300px 50px 300px;
+  padding: 10rem 35rem;
+}
+@media screen and (max-width: 2000px) {
+  /* Medium and small screens */
+  .jumbo {
+    padding: 100px 300px; 
+  }
 }
 @media screen and (max-width: 1200px) {
   /* Medium and small screens */
   .jumbo {
-    padding: 50px 10px; 
+    padding: 100px 100px; 
+  }
+}
+@media screen and (max-width: 800px) {
+  /* Medium and small screens */
+  .jumbo {
+    padding: 50px 10px;
   }
 }
 
@@ -44,7 +56,13 @@
 /* Override whole page styling */
 /* Whole page */
 .pageContent {
-  padding: 20px 300px; 
+  padding: 1rem 35rem;
+}
+@media screen and (max-width: 2000px) {
+  /* Medium Screens */
+  .pageContent {
+    padding: 20px 300px; 
+  }
 }
 @media screen and (max-width: 1200px) {
   /* Medium Screens */
