@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './pages/about/about.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { TagComponent } from './pages/tag/tag.component';
 import { DocumentaryComponent } from './pages/documentary/documentary.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },

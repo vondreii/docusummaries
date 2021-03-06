@@ -4,11 +4,11 @@ import { CategoryService } from '../../services/category.service';
 import { TagService } from '../../services/tag.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AddComponent implements OnInit {
 
   categoryList: any;
   tagsByCategory: Array<string>;
@@ -35,8 +35,6 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.tagsByCategory = new Array<string>();
-    this.categoryList = this.categoryService.readFromDB();
   }
 
   onAdd() {

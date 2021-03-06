@@ -1,0 +1,42 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<!-- Page content -->
+
+<div class="pageContent">
+  <div *ngIf="loggedIn; else loginForm" class="centered-form">
+    <hr>
+    <h1>Admin</h1>
+    <br>
+    <button (click)="toggleAdd()" type="button" class="btn btn-primary longButton">Add (Click to expand/close)</button>
+    <br>
+    <div *ngIf="openAdd;" class="pb-5">
+      <app-add></app-add>
+    </div>
+    <br>
+    <button (click)="toggleEdit()" type="button" class="btn btn-primary longButton">Edit (Click to expand/close)</button>
+    <br>
+    <div *ngIf="openEdit;" class="pb-5">
+      <app-edit></app-edit>
+    </div>
+    <br>
+  </div>
+
+  <ng-template #loginForm>
+    <!-- Displays login to view the add docos form -->
+    <form class="centered-form">
+      <!-- Login Username -->
+      <div class="form-group">
+        <label for="usernameInput">Username</label>
+        <input type="text" class="form-control" 
+          [(ngModel)]="usernameInput" name="usernameInput" id="usernameInput" (keyup.enter)="login()">
+      </div>
+      <!-- Password -->
+      <div class="form-group">
+        <label for="pwdInput">Password</label>
+        <input type="text" class="form-control" 
+          [(ngModel)]="pwdInput" name="pwdInput" id="pwdInput" (keyup.enter)="login()">
+      </div>
+      <button (click)="login()" type="button" class="btn btn-primary">Login</button>
+    </form>
+  </ng-template>
+</div>

@@ -22,13 +22,15 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // Main pages
 import { AboutComponent } from './pages/about/about.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { AdminComponent } from './admin/admin/admin.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { TagComponent } from './pages/tag/tag.component';
 import { DocumentaryComponent } from './pages/documentary/documentary.component';
 import { SharedModule } from './shared/shared.module';
+import { AddComponent } from './admin/add/add.component';
+import { EditComponent } from './admin/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { SharedModule } from './shared/shared.module';
     DocumentaryComponent,
     AdminComponent,
     ContactComponent,
-    TagComponent
+    TagComponent,
+    AddComponent,
+    EditComponent,
     // Searchbar
     // HighlightDirective,
     // FilterPipe,

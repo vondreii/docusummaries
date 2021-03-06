@@ -1,0 +1,11 @@
+.longButton {
+  padding: 20px 100px;
+  width:100%;
+  margin-bottom: 20px;
+  background-color: #ffb055;
+  border:none;
+  text-align:center;
+}
+.longButton:hover {
+  background-color: #ffc079;
+}
