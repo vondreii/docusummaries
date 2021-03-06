@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import firebase from 'firebase/app';
 import { Category, Documentary, Tag } from '../models/models';
 import { TagService } from './tag.service';
 import { LocalCategories, LocalTags, LocalDocos } from '../models/localStorage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -110,14 +112,20 @@ export class DocumentaryService {
       studio: studio,
       tags: tags
     })
+    // For each tag, we have to edit the entry to add the ID of the doco we just inserted
+    for(let i=0; i<tags.length; i++) {
+      this.tagService.getTagEntry(tags[i]).then(tag => {
+        // Read the current list of docos for the tag (manual way)
+        let newDocosList = tag.docos
+        newDocosList.push(docID);
+        // Add documentary to the list of docos associated with that tag
+        this.db.collection('tag').doc(tags[i]).update({
+          docos: newDocosList
+        });
+      })
+    }
+    // Confirmation
     console.log("Documentary added successfully.");
     alert("Documentary added successfully");
-
-    console.log(tags[0]);
-    // Add documentary to the list of
-    // let updateNested = this.db.collection('documentary').doc('Frank').update({
-    //   age: 13,
-    //   'favorites.color': 'Red'
-    // });
   }
 }

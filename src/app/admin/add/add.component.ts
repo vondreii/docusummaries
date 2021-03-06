@@ -51,7 +51,8 @@ export class AddComponent implements OnInit {
       this.linkToDoco + ", " +
       this.producer + ", " +
       this.studio + ", " +
-      this.tags);
+      this.tags
+    );
       
     this.docoService.addToDB(
       this.category, 
@@ -62,7 +63,19 @@ export class AddComponent implements OnInit {
       this.linkToDoco, 
       this.producer,
       this.studio, 
-      this.tags);
+      this.tags
+    );
+
+    this.category = "";
+    this.docoName = "";
+    this.description = "";
+    this.keywords = [];
+    this.keyword = "";
+    this.urlLink = "";
+    this.linkToDoco = "";
+    this.producer = "";
+    this.studio= "";
+    this.tags = [];
   }
 
   async getCategories() {
@@ -77,7 +90,7 @@ export class AddComponent implements OnInit {
     
     // Pre-fill the link to have the first part of the URL
 
-    let categoryName = this.category.substring(this.category.indexOf("-")+1, this.category.length)
+    let categoryName = "/"+this.category.substring(this.category.indexOf("-")+1, this.category.length)
     this.urlLink = categoryName + "/article/";
   }
 
