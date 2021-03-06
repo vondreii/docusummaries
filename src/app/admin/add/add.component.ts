@@ -12,11 +12,14 @@ export class AddComponent implements OnInit {
 
   categoryList: any;
   tagsByCategory: Array<string>;
-  hideTags: boolean = true;
-  
+  keywordString: string;
+
   // User inputs
   docoName: string;
   description: string;
+  keyword: string;
+  keywords: Array<string> = [];
+  urlLink: string;
   linkToDoco: string;
   producer: string;
   studio: string;
@@ -35,23 +38,57 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
   }
 
   onAdd() {
-    console.log("Added successfully --> " +
-                "Name: " + this.docoName + ", " +
-                "Description: " + this.description + ", " +
-                "linkToDoco: " + this.linkToDoco + ", " +
-                "producer: " + this.producer + ", " +
-                "studio: " + this.studio + ", " +
-                "category: " + this.category);
-                
-    console.log(this.tags);
-    this.docoService.addToDB(this.docoName, this.description, this.linkToDoco, this.producer, this.studio, this.category, this.tags);
+    console.log("Adding: " + 
+      this.category + ", " +
+      this.docoName + ", " +
+      this.description + ", " +
+      this.keywords + ", " + 
+      this.urlLink + ", " +
+      this.linkToDoco + ", " +
+      this.producer + ", " +
+      this.studio + ", " +
+      this.tags);
+      
+    this.docoService.addToDB(
+      this.category, 
+      this.docoName, 
+      this.description, 
+      this.keywords,
+      this.urlLink,
+      this.linkToDoco, 
+      this.producer,
+      this.studio, 
+      this.tags);
+  }
+
+  async getCategories() {
+    this.categoryList = await this.categoryService.readFromDB();
   }
 
   async onCategoryChange() {
+    // Pre-fill the options of what tags to select from
     this.tagsByCategory = await this.tagService.readTagsByCategory(this.category);
-    this.hideTags = false;
+
+    console.log(this.category); 
+    
+    // Pre-fill the link to have the first part of the URL
+
+    let categoryName = this.category.substring(this.category.indexOf("-")+1, this.category.length)
+    this.urlLink = categoryName + "/article/";
+  }
+
+  addKeyword() {
+    if(this.keyword) {
+      if(!this.keywords.includes(this.keyword)) {
+        this.keywords.push(this.keyword);
+        document.getElementById("keywordString").innerText = "Current keywords: " + this.keywords;
+      }
+    }
+    this.keyword = "";
+    console.log(this.keywords);
   }
 }

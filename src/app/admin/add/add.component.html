@@ -1,5 +1,15 @@
 <!-- Can view the form to add some info about new docos -->
 <form>
+  <!-- Category -->
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select class="form-control" (change)="onCategoryChange();" [(ngModel)]="category" name="category" id="category">
+      <option>Please Select</option>
+      <option *ngFor="let category of categoryList"  role="listitem">
+        {{category.id}}
+      </option>
+    </select>
+  </div>
   <!-- Doco Name -->
   <div class="form-group">
     <label for="docoName">Doco Name</label>
@@ -14,6 +24,27 @@
       [(ngModel)]="description" name="description" id="description" rows="3"
       placeholder="A short description here">
     </textarea>
+  </div>
+  <!-- Keywords -->
+  <div class="form-group">
+    <label for="keyword">Keywords: </label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="keyword" name="keyword" id="keyword" 
+      placeholder="Cars">
+  </div>
+  <button (click)="addKeyword()" type="button" class="btn btn-primary">(+) Add Keyword</button>
+  <!-- Dynamic update of keywords list -->
+  <br>
+  <br>
+  <label for="keyword" id="keywordString">Current keywords:</label>
+  <br>
+  <br>
+  <!-- URL Link  -->
+  <div class="form-group">
+    <label for="urlLink">URL Link</label>
+    <input type="text" class="form-control" 
+      [(ngModel)]="urlLink" name="urlLink" id="urlLink" 
+      placeholder="manMadeDisasters/article/lockerbieBombing">
   </div>
   <!-- Link To Doco -->
   <div class="form-group">
@@ -36,18 +67,8 @@
       [(ngModel)]="studio" name="studio" id="studio" 
       placeholder="Falcon">
   </div>
-  <!-- Category -->
-  <div class="form-group">
-    <label for="category">Category</label>
-    <select class="form-control" (change)="onCategoryChange();" [(ngModel)]="category" name="category" id="category">
-      <option>Please Select</option>
-      <option *ngFor="let category of categoryList | async"  role="listitem">
-        {{category.id}}
-      </option>
-    </select>
-  </div>
   <!-- Multi Select Tags -->
-  <div [hidden]="hideTags" class="form-group">
+  <div class="form-group">
     <label for="tags">Tags</label>
     <select multiple class="form-control" size="10" style="height: 100%;" [(ngModel)]="tags" name="tags" id="tags">
       <option *ngFor="let tag of tagsByCategory" role="listitem">

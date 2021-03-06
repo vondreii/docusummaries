@@ -94,18 +94,30 @@ export class DocumentaryService {
     return docosForTag;
   }
   // Adds a new doco entry to Firebase
-  addToDB(name: string, desc: string, linkToDoco: string, producer: string, studio: string, category: string, tags: string[]) {
-    console.log("Adding doco");
-    this.db.collection('test').add({
+  addToDB(category: string, name: string, desc: string, keywords: Array<string>, urlLink: string, linkToDoco: string, producer: string, studio: string, tags: string[]) {
+    // Create the document ID
+    let r = Math.random().toString(36).substring(7);
+    let docID = r + "-" + urlLink.substring(urlLink.lastIndexOf("/")+1, urlLink.length);
+    // Add data to Firebase
+    this.db.collection('documentary').doc(docID).set({
       category: category,
       description: desc,
-      link: "test link",
+      keywords: keywords,
+      link: urlLink,
       linkToDoco: linkToDoco,
       name: name,
       producer: producer,
       studio: studio,
-      tags: tags,
-      topic: "blah"
+      tags: tags
     })
+    console.log("Documentary added successfully.");
+    alert("Documentary added successfully");
+
+    console.log(tags[0]);
+    // Add documentary to the list of
+    // let updateNested = this.db.collection('documentary').doc('Frank').update({
+    //   age: 13,
+    //   'favorites.color': 'Red'
+    // });
   }
 }
