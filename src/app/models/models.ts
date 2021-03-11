@@ -10,6 +10,8 @@ export class Documentary {
   tags: Array<string> = ["Fetching..."];
   tagObj: Array<Tag> = new Array<Tag>();
   keywords: Array<string> = ["Fetching..."];
+  otherResources: string = "Fetching...";
+  content: Array<string> = ["Fetching..."];
 }
 
 export class Category {
@@ -25,15 +27,4 @@ export class Tag {
   name: string = "";
   id: string= "";
   docos: Array<string> = [];
-}
-
-export class DocumentaryLocal {
-  name: string = "Loading...";
-  description: string = "Fetching...";
-  linkToDoco: string = "";
-  link: string = "";
-  producer: string = "Fetching...";
-  studio: string = "Fetching...";
-  category: string = "Fetching...";
-  tags: Array<string> = ["Fetching..."];
 }

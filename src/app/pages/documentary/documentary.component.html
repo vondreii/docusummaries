@@ -12,10 +12,20 @@
   <h2>{{currentDoco.name}}</h2>
   <br>
   <div class="whiteBox">
+    <!-- Description -->
     <p><b>Description:</b> {{currentDoco.description}}</p>
+    <!-- Producer -->
+    <div *ngIf="currentDoco.producer.length > 1" role="listitem" class="d-inline">
+      <p><b>Producer:</b> {{currentDoco.producer}}</p>
+    </div>
+    <!-- Studio -->
+    <div *ngIf="currentDoco.studio.length > 1" role="listitem" class="d-inline">
+      <p><b>Studio:</b> {{currentDoco.studio}}</p>
+    </div>
+    <!-- Resources and links -->
     <p><b>Find on Youtube: </b> <a href="{{currentDoco.linkToDoco}}">{{currentDoco.linkToDoco}}</a></p> 
-    <p><b>Producer:</b> {{currentDoco.producer}}</p>
-    <p><b>Studio:</b> {{currentDoco.studio}}</p>
+    <p><b>Other Resources: </b> <a href="{{currentDoco.otherResources}}"> {{currentDoco.otherResources}}</a></p>
+    <!-- All tags -->
     <div class="tagslist">
       <div *ngFor="let tag of relatedTags" role="listitem" class="d-inline">
         <a routerLink="{{'/'+tag.link}}" >
@@ -23,8 +33,12 @@
         </a>
       </div>
     </div>
-    <div markdown [src]="post"></div>
+    <br>
+    <!-- Summary -->
+    <h3>Summary</h3>
+    <div *ngFor="let para of currentDoco.content" role="listitem" class="d-inline">
+      <p>{{para}}</p>
+    </div>
+    <!-- <div markdown [src]="post"></div> -->
   </div>
 </div>
-
-
