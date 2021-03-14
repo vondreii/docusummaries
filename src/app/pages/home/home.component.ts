@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TagService } from '../../services/tag.service';
 import { CategoryService } from '../../services/category.service';
 import { Offline } from '../../models/global';
+import { DocumentaryService } from 'src/app/services/documentary.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,18 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private tagService: TagService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private docoService: DocumentaryService
   ) { }
 
   // Read and Store Categories and Tags
   ngOnInit(): void {
+    // Test Query
+    let a = this.docoService.test().then(doco => {
+      console.log(doco);
+    });
+    console.log(a);
+    
     this.listItems();
   }
 

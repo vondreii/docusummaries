@@ -26,6 +26,12 @@ export class DocumentaryService {
       this.db.collection('documentary').valueChanges({ idField: 'id' }).subscribe(docos => resolve(docos));
     })
   }
+  // Query the DB
+  test() {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('documentary', ref => ref.where('category', '==', 'id-manMadeDisasters')).valueChanges().subscribe(docos => resolve(docos))
+    })
+  }
   // Returns a single doco entry, based on the id
   getDocoEntry(id: string) {
     return new Promise<Documentary>((resolve)=> {
