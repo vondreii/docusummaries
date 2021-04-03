@@ -1,27 +1,30 @@
 # Docusummaries
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+## About 
 
-## Development server
+This is the codebase to [Docosummaries.com](https://docosummaries.com/).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Docosummaries is a place where you can learn about new documentaries, read plot summaries of documentaries, and find links where you could watch the documentaries for free online.
 
-## Code scaffolding
+It has a search functionality where you can look up documentaries that are currently already in the database.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It is still currently in its very early stages of development.
 
-## Build
+## To Run
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Run `npm install` in the root directory to add the necessary npm packages to the project.
+* Once completed, run `ng serve`.
+* Navigate to `localhost:4200` in a browser.
 
-## Running unit tests
+## To Build
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Run `ng build` to build the project. The build artifacts will be stored in the dist/ directory. 
+* Use `ng build --prod` for a production build.
 
-## Running end-to-end tests
+## Contact
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can fill the form on the contact page at https://docosummaries.com/contact.
 
-## Further help
+<br>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![alt text](src/assets/images/preview.jpg)
